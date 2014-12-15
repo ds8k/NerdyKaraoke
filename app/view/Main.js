@@ -68,10 +68,8 @@ Ext.define('NerdyKaraoke.view.Main', {
                                             return
                                         }
 
-                                        Ext.Viewport.mask({
-                                            xtype: 'loadmask',
-                                            message: ''
-                                        });
+                                        Ext.ComponentQuery.query('list[xtype=Tracks]')[0].getScrollable().getScroller().scrollTo(0,0);
+                                        Ext.ComponentQuery.query('list[xtype=Tracks]')[0].refresh();
 
                                         var store = Ext.getStore('Karaoke');
                                         var value = field.getValue();
@@ -133,22 +131,15 @@ Ext.define('NerdyKaraoke.view.Main', {
                                                     return matched[0];
                                                 } 
                                             });
-
-                                        Ext.Viewport.unmask();
                                         }
                                     }
                                 },
 
                                 clearicontap: {
                                     fn: function(){
-                                        Ext.Viewport.mask({
-                                            xtype: 'loadmask',
-                                            message: ''
-                                        });
-
+                                        Ext.ComponentQuery.query('list[xtype=Tracks]')[0].getScrollable().getScroller().scrollTo(0,0);
+                                        Ext.ComponentQuery.query('list[xtype=Tracks]')[0].refresh();
                                         Ext.getStore('Karaoke').clearFilter();
-
-                                        Ext.Viewport.unmask();
                                     }
                                 }
                             }

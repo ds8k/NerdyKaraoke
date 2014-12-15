@@ -9,7 +9,7 @@ Ext.define('NerdyKaraoke.view.Tracks', {
         infinite: true,
         itemHeight: 48,
         disableSelection: true,
-        pinHeaders: false,
+        pinHeaders: true,
         cls: 'lizt',
         itemTpl: '{Title}',
         emptyText: 'Send requests to requests@nerdykaraoke.com',
