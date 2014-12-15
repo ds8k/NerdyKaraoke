@@ -1,0 +1,41 @@
+// The following two lines import the default Sencha Touch theme. If you are building
+// a new theme, remove them and the add your own CSS on top of the base CSS (which
+// is already included in your app.json file).
+
+$base-gradient: null;
+$base-color: #4CAF50;
+$include-default-icons: false;
+
+@import 'sencha-touch/default';
+@import 'sencha-touch/default/all';
+
+// Custom code goes here..
+
+// Examples of using the icon mixin:
+// @include icon('user');
+@include icon('list');
+@include icon('search');
+
+.x-form-label {
+	background-color:#f7f7f7;
+}
+
+.lizt {
+	font-size:16px;
+}
+
+.x-toolbar-dark.x-docked-top {
+	border-bottom-color: #3d8b40;
+}
+
+.x-list-normal .x-list-header { 
+	text-shadow: none !important;
+	background-color: #A5D6A7;
+	border-bottom: #A5D6A7;
+	border-top: #A5D6A7;
+}
+
+.x-list .x-list-item.x-item-selected.x-list-item-tpl {
+	background-color: #81C784;
+	border-top: #81C784;
+}
