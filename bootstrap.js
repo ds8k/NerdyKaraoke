@@ -676,6 +676,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
+  "NerdyKaraoke.controller.SearchController": [],
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
   "NerdyKaraoke.store.Karaoke": [],
@@ -1417,6 +1418,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "NerdyKaraoke.controller.SearchController": [],
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
   "NerdyKaraoke.store.Karaoke": [],

@@ -1,10 +1,11 @@
 Ext.define('NerdyKaraoke.store.Karaoke', {
     extend: 'Ext.data.Store',
-    requires: ['NerdyKaraoke.model.Songs'],
 
     config: {
 		autoLoad: true,
 		model: 'NerdyKaraoke.model.Songs',
+		sorters: 'Title',
+		grouper: 'Artist',
         proxy: {
             type: 'ajax',
             url: 'resources/karaoke.json',
@@ -14,13 +15,6 @@ Ext.define('NerdyKaraoke.store.Karaoke', {
                 rootProperty: 'karaoke'
             }
         },
-        sorters: 'Title',
-
-	    grouper: {
-	        groupFn: function (item) {
-	            return item.get('Artist');
-	        }
-	    },
 
 	    listeners: {
 	        load: {

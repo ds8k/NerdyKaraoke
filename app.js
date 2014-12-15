@@ -29,6 +29,10 @@ Ext.application({
         'RequestForm'
     ],
 
+    controllers: [
+        'SearchController'
+    ],
+
     views: [
         'Main',
         'WhatsNew',
