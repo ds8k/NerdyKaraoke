@@ -1,0 +1,28 @@
+Ext.define('NerdyKaraoke.store.LyricsStore', {
+    extend: 'Ext.data.Store',
+
+    config: {
+    	autoLoad: true,
+    	fields: [
+    		'artist',
+    		'song',
+    		'lyrics',
+    		'url'
+    	],
+    	proxy: {
+    		type: 'ajax',
+    		noCache: false,
+    		headers: {
+    			'X-Wikia-API-Key': '6272b2dd183729263dcfd28816537be564787b53'
+    		},
+    		url: 'http://lyrics.wikia.com/api.php?func=getSong&artist=Queen&song=Dont_Stop_Me_Now&fmt=json',
+    		useDefaultXhrHeader: false,
+    		enablePagingParams: false,
+    		reader: {
+    			type: 'json',
+    			rootProperty: 'song'
+    		}
+    	}
+    }
+
+});

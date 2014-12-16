@@ -1,14 +1,18 @@
-Ext.define('NerdyKaraoke.controller.SearchController', {
+Ext.define('NerdyKaraoke.controller.EventController', {
     extend: 'Ext.app.Controller',
 
     config: {
 		refs: {
-            SearchTracks: 'searchfield[name=search]'
+            SearchTracks: 'searchfield[name=search]',
+            LyricsTap: 'list[xtype=TrackList]'
         },
         control: {
             SearchTracks: {
                 keyup: 'searchTrackList',
                 clearicontap: 'clearTrackList'
+            },
+            LyricsTap: {
+            	itemtap: 'onTrackTap'
             }
         }
     },
@@ -18,8 +22,8 @@ Ext.define('NerdyKaraoke.controller.SearchController', {
             return
         }
 
-        Ext.ComponentQuery.query('list[xtype=Tracks]')[0].getScrollable().getScroller().scrollTo(0,0);
-        Ext.ComponentQuery.query('list[xtype=Tracks]')[0].refresh();
+        Ext.ComponentQuery.query('list[xtype=TrackList]')[0].getScrollable().getScroller().scrollTo(0,0);
+        Ext.ComponentQuery.query('list[xtype=TrackList]')[0].refresh();
 
         var store = Ext.getStore('Karaoke');
         var value = field.getValue();
@@ -64,11 +68,11 @@ Ext.define('NerdyKaraoke.controller.SearchController', {
 
                 //loop through each of the regular expressions
                 for (i = 0; i < regexps.length; i++) {
-                    var search = regexps[i],
+                    var search = regexps[i];
                     firstlast = record.get('Artist').concat(blank,record.get('Title'));
                     justwords = record.get('Title').replace( /'/g, "" );
                     firstlast2 = record.get('Artist').concat(blank,justwords);
-                    didMatch = record.get('Title').match(search) || record.get('Artist').match(search) || firstlast.match(search) || justwords.match(search) || firstlast2.match(search);
+                    didMatch = record.get('Title').match(search) || record.get('Artist').replace(/\s+/g, '').match(search) || firstlast.match(search) || justwords.match(search) || firstlast2.match(search);
 
                     //if it matched the first or last name, push it into the matches array
                     matched.push(didMatch);
@@ -85,8 +89,12 @@ Ext.define('NerdyKaraoke.controller.SearchController', {
     },
 
     clearTrackList: function() {
-    	Ext.ComponentQuery.query('list[xtype=Tracks]')[0].getScrollable().getScroller().scrollTo(0,0);
-		Ext.ComponentQuery.query('list[xtype=Tracks]')[0].refresh();
+    	Ext.ComponentQuery.query('list[xtype=TrackList]')[0].getScrollable().getScroller().scrollTo(0,0);
+		Ext.ComponentQuery.query('list[xtype=TrackList]')[0].refresh();
 		Ext.getStore('Karaoke').clearFilter();
+    },
+
+    onTrackTap: function() {
+    	Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(1);
     }
 });

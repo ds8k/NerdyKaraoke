@@ -676,13 +676,16 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "NerdyKaraoke.controller.SearchController": [],
+  "NerdyKaraoke.controller.EventController": [],
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
   "NerdyKaraoke.store.Karaoke": [],
+  "NerdyKaraoke.store.LyricsStore": [],
   "NerdyKaraoke.view.Main": [],
   "NerdyKaraoke.view.Submit": [],
-  "NerdyKaraoke.view.Tracks": [],
+  "NerdyKaraoke.view.TrackContainer": [],
+  "NerdyKaraoke.view.TrackList": [],
+  "NerdyKaraoke.view.TrackLyrics": [],
   "NerdyKaraoke.view.WhatsNew": []
 });
 
@@ -1418,18 +1421,25 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
-  "NerdyKaraoke.controller.SearchController": [],
+  "NerdyKaraoke.controller.EventController": [],
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
   "NerdyKaraoke.store.Karaoke": [],
+  "NerdyKaraoke.store.LyricsStore": [],
   "NerdyKaraoke.view.Main": [
     "widget.main"
   ],
   "NerdyKaraoke.view.Submit": [
     "widget.Submit"
   ],
-  "NerdyKaraoke.view.Tracks": [
-    "widget.Tracks"
+  "NerdyKaraoke.view.TrackContainer": [
+    "widget.TrackContainer"
+  ],
+  "NerdyKaraoke.view.TrackList": [
+    "widget.TrackList"
+  ],
+  "NerdyKaraoke.view.TrackLyrics": [
+    "widget.TrackLyrics"
   ],
   "NerdyKaraoke.view.WhatsNew": [
     "widget.WhatsNew"

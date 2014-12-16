@@ -21,7 +21,8 @@ Ext.application({
     ],
 
     stores: [
-        'Karaoke'
+        'Karaoke',
+        'LyricsStore'
     ],
 
     models: [
@@ -30,13 +31,15 @@ Ext.application({
     ],
 
     controllers: [
-        'SearchController'
+        'EventController'
     ],
 
     views: [
         'Main',
         'WhatsNew',
-        'Tracks',
+        'TrackContainer',
+            'TrackList',
+            'TrackLyrics',
         'Submit'
     ],
 

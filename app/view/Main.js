@@ -65,7 +65,7 @@ Ext.define('NerdyKaraoke.view.Main', {
                     ]
                 },
                 {
-                    xtype: 'Tracks'
+                    xtype: 'TrackContainer'
                 }
             ]
         },
