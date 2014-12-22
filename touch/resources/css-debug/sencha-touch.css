@@ -6095,9 +6095,12 @@ body.x-desktop {
   color: #333333;
   text-shadow: rgba(255, 255, 255, 0.25) 0 0.08em 0;
   padding: 0.6em;
-  background-color: white;
-  color: black span;
-  color-font-size: .8em;
+  background-color: #f7f7f7;
+  color: #080808;
+}
+/* line 28, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/default/src/form/_Panel.scss */
+.x-form-label span {
+  font-size: .8em;
 }
 
 /**
@@ -6229,8 +6232,8 @@ body.x-desktop {
 
 /* line 17, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/default/src/field/_Field.scss */
 .x-field-label {
-  background-color: white;
-  color: black;
+  background-color: #f7f7f7;
+  color: #080808;
 }
 
 /* line 23, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/default/src/field/_Field.scss */
@@ -6256,7 +6259,6 @@ body.x-desktop {
   min-height: 2.5em;
   border-width: 0;
   -webkit-appearance: none;
-  -webkit-text-fill-color: black;
 }
 
 /* line 49, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/default/src/field/_Field.scss */

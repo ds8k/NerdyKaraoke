@@ -6233,6 +6233,11 @@ body p {
   padding-top: 7px;
 }
 /* line 96, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+.x-tabbar.x-docked-bottom .x-tab .x-badge {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+/* line 101, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar.x-docked-bottom .x-tab .x-button-icon {
   width: 42px;
   height: 42px;
@@ -6241,111 +6246,115 @@ body p {
   border-radius: 42px;
 }
 
-/* line 107, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 112, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-accent.x-docked-top {
   background-color: #910091;
 }
-/* line 111, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 116, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-accent.x-docked-top .x-tab .x-button-label, .x-tabbar-accent.x-docked-top .x-tab .x-badge {
   color: #de00dd;
 }
-/* line 117, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 122, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-accent.x-docked-top .x-tab.x-tab-pressed .x-button-label, .x-tabbar-accent.x-docked-top .x-tab.x-tab-pressed .x-badge, .x-tabbar-accent.x-docked-top .x-tab.x-tab-active .x-button-label, .x-tabbar-accent.x-docked-top .x-tab.x-tab-active .x-badge {
   color: #fff;
 }
 
-/* line 124, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 129, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-light.x-docked-top {
   background-color: #fff;
 }
-/* line 130, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 135, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-light.x-docked-top .x-tab.x-tab-pressed .x-button-label, .x-tabbar-light.x-docked-top .x-tab.x-tab-pressed .x-badge, .x-tabbar-light.x-docked-top .x-tab.x-tab-active .x-button-label, .x-tabbar-light.x-docked-top .x-tab.x-tab-active .x-badge {
   color: #000;
 }
 
-/* line 137, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 142, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-dark.x-docked-top {
   background-color: #111;
 }
-/* line 141, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 146, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-dark.x-docked-top .x-tab .x-button-label, .x-tabbar-dark.x-docked-top .x-tab .x-badge {
   color: #666;
 }
-/* line 147, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 152, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-dark.x-docked-top .x-tab.x-tab-pressed .x-button-label, .x-tabbar-dark.x-docked-top .x-tab.x-tab-pressed .x-badge, .x-tabbar-dark.x-docked-top .x-tab.x-tab-active .x-button-label, .x-tabbar-dark.x-docked-top .x-tab.x-tab-active .x-badge {
   color: #fff;
 }
 
-/* line 154, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 159, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-accent.x-docked-bottom {
   background-color: #910091;
 }
-/* line 157, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 162, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-accent.x-docked-bottom .x-button-label, .x-tabbar-accent.x-docked-bottom .x-badge {
   color: #fff;
 }
-/* line 161, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 166, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-accent.x-docked-bottom .x-badge {
   background-color: #f700f7;
 }
-/* line 166, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 171, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-accent.x-docked-bottom .x-tab .x-button-icon {
   color: #fff;
   border-color: #fff;
 }
-/* line 173, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 178, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-accent.x-docked-bottom .x-tab.x-tab-pressed .x-button-icon, .x-tabbar-accent.x-docked-bottom .x-tab.x-tab-active .x-button-icon {
   background-color: #fff;
 }
-/* line 176, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 181, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-accent.x-docked-bottom .x-tab.x-tab-pressed .x-button-icon:before, .x-tabbar-accent.x-docked-bottom .x-tab.x-tab-active .x-button-icon:before {
   color: #000;
 }
 
-/* line 184, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 189, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-dark.x-docked-bottom {
   background-color: #111;
 }
-/* line 187, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 192, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-dark.x-docked-bottom .x-button-label, .x-tabbar-dark.x-docked-bottom .x-badge {
   color: #fff;
 }
-/* line 192, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 197, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-dark.x-docked-bottom .x-tab .x-button-icon {
   color: #fff;
   border-color: #fff;
 }
-/* line 199, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 204, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-dark.x-docked-bottom .x-tab.x-tab-pressed .x-button-icon, .x-tabbar-dark.x-docked-bottom .x-tab.x-tab-active .x-button-icon {
   background-color: #fff;
 }
-/* line 202, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 207, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-dark.x-docked-bottom .x-tab.x-tab-pressed .x-button-icon:before, .x-tabbar-dark.x-docked-bottom .x-tab.x-tab-active .x-button-icon:before {
   color: #000;
 }
 
-/* line 210, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 215, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-light.x-docked-bottom {
   background-color: #eee;
 }
-/* line 214, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 219, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-light.x-docked-bottom .x-tab .x-button-label, .x-tabbar-light.x-docked-bottom .x-tab .x-badge {
   color: #000;
 }
-/* line 218, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 223, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+.x-tabbar-light.x-docked-bottom .x-tab .x-badge {
+  color: #fff;
+}
+/* line 227, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-light.x-docked-bottom .x-tab .x-button-icon {
   border-color: #000;
 }
-/* line 221, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 230, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-light.x-docked-bottom .x-tab .x-button-icon:before {
   color: #000;
 }
-/* line 228, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 237, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-light.x-docked-bottom .x-tab.x-tab-pressed .x-button-icon, .x-tabbar-light.x-docked-bottom .x-tab.x-tab-active .x-button-icon {
   background-color: #000;
   border-color: #000;
 }
-/* line 232, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
+/* line 241, /home/teamcity/buildAgent/work/856564e37705b5b7/touch/resources/themes/stylesheets/sencha-touch/windows/src/tab/_Panel.scss */
 .x-tabbar-light.x-docked-bottom .x-tab.x-tab-pressed .x-button-icon:before, .x-tabbar-light.x-docked-bottom .x-tab.x-tab-active .x-button-icon:before {
   color: #fff;
 }

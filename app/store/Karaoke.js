@@ -7,12 +7,15 @@ Ext.define('NerdyKaraoke.store.Karaoke', {
 		sorters: 'Title',
 		grouper: 'Artist',
         proxy: {
+            noCache: false,
+            enablePagingParams: false,
             type: 'ajax',
-            url: 'resources/karaoke.json',
+            url: 'karaoke.json',
 
             reader: {
                 type: 'json',
-                rootProperty: 'karaoke'
+                rootProperty: 'karaoke',
+                totalProperty: 'totalCount'
             }
         },
 
