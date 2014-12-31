@@ -22,7 +22,7 @@ Ext.define('NerdyKaraoke.store.Karaoke', {
 	    listeners: {
 	        load: {
 	            fn: function(){
-	                Ext.Viewport.unmask()
+	                Ext.Viewport.unmask();
 	            }
 	        }
 	    }
