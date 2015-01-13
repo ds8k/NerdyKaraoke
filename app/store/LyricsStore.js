@@ -15,14 +15,11 @@ Ext.define('NerdyKaraoke.store.LyricsStore', {
     		headers: {
     			'X-Wikia-API-Key': '6272b2dd183729263dcfd28816537be564787b53'
     		},
-    		url: 'http://lyrics.wikia.com/api.php?func=getSong&artist=Queen&song=Dont_Stop_Me_Now&fmt=json',
-    		useDefaultXhrHeader: false,
+    		url: 'http://lyrics.wikia.com/api.php?func=getSong&artist=null&song=null&fmt=json',
     		enablePagingParams: false,
     		reader: {
-    			type: 'json',
-    			rootProperty: 'song'
+    			type: 'json'
     		}
     	}
     }
-
 });

@@ -12,8 +12,7 @@ Ext.define('NerdyKaraoke.view.Main', {
         'Ext.field.Email',
         'Ext.form.FieldSet',
         'Ext.form.Panel',
-        'Ext.Button',
-        'NerdyKaraoke.store.Karaoke'
+        'Ext.Button'
     ],
     
     config: {
@@ -47,9 +46,10 @@ Ext.define('NerdyKaraoke.view.Main', {
         },
         
         items: [{
-            title: 'Track List',
 
+            title: 'Track List',
             slideButton: true,
+
             items: [
                 {
                     xtype: 'toolbar',

@@ -12,7 +12,8 @@ Ext.define('NerdyKaraoke.store.Karaoke', {
 
             reader: {
                 type: 'json',
-                rootProperty: 'karaoke'
+                rootProperty: 'karaoke',
+                totalProperty: 'totalCount'
             }
         },
 

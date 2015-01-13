@@ -2,9 +2,16 @@ Ext.define('NerdyKaraoke.view.TrackLyrics', {
     extend: 'Ext.Container',
     xtype: 'TrackLyrics',
     config: {
+    	scrollable: true,
+
     	items: [
     		{
-
+    			xtype: 'container',
+    			title: 'Lyrics',
+				scrollDock: 'top',
+				padding: '0px 0px 40px 0px',
+				styleHtmlContent: true,
+				html: 'Lyrics'
     		},
     		{
     			xtype: 'container',
@@ -24,10 +31,11 @@ Ext.define('NerdyKaraoke.view.TrackLyrics', {
     				},
     				{
     					xtype: 'button',
+    					action: 'viewlyrics',
     					left: '50%',
                         right: 0,
                         bottom: 0,
-                        margin: '0.6em 0.75em 0.6em 0.3em',
+                        margin: '0.6em 0.75em 0.6em 0.3em'
     				}
     			]
     		}

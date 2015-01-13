@@ -4,6 +4,7 @@ Ext.define('NerdyKaraoke.view.Submit', {
 
 	config: {
 		url: 'contact.php',
+		scrollable: null,
         items:[
 	        {
 	            xtype: 'fieldset',
@@ -43,25 +44,7 @@ Ext.define('NerdyKaraoke.view.Submit', {
 	                xtype: 'button',
 	                text: 'Send',
 	                ui: 'confirm',
-	                handler: function() {
-	                    var form = this.up('formpanel');
-	                    var models = Ext.create('NerdyKaraoke.model.RequestForm', form.getValues());
-	                    var errors = models.validate();
-
-	                    if(errors.isValid()) {
-	                        form.submit();
-	                        Ext.Msg.alert('Thanks!');
-	                        form.reset();
-	                    } else {
-	                        var message = '';
-
-	                        Ext.each(errors.items, function(record, index) {
-								message += record.getMessage() + '<br/>';
-	                        });
-
-	                        Ext.Msg.alert('Uh oh!', message);
-	                    }
-	                }
+	                action: 'submitRequest'
 	            }
 	        }
 		]
