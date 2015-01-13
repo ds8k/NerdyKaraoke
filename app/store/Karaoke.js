@@ -7,8 +7,10 @@ Ext.define('NerdyKaraoke.store.Karaoke', {
 		sorters: 'Title',
 		grouper: 'Artist',
         proxy: {
+            noCache: false,
+            enablePagingParams: false,
             type: 'ajax',
-            url: 'resources/karaoke.json',
+            url: 'karaoke.json',
 
             reader: {
                 type: 'json',
@@ -20,7 +22,7 @@ Ext.define('NerdyKaraoke.store.Karaoke', {
 	    listeners: {
 	        load: {
 	            fn: function(){
-	                Ext.Viewport.unmask()
+	                Ext.Viewport.unmask();
 	            }
 	        }
 	    }

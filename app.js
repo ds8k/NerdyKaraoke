@@ -22,11 +22,13 @@ Ext.application({
 
     stores: [
         'Karaoke',
-        'LyricsStore'
+        'NewKaraoke'//,
+        //'LyricsStore'
     ],
 
     models: [
-        'Songs', 
+        'Songs',
+        'NewSongs',
         'RequestForm'
     ],
 
