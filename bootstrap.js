@@ -666,12 +666,14 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "NerdyKaraoke.controller.EventController": [],
+  "NerdyKaraoke.model.LyricsModel": [],
   "NerdyKaraoke.model.NewSongs": [],
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
   "NerdyKaraoke.store.Karaoke": [],
   "NerdyKaraoke.store.LyricsStore": [],
   "NerdyKaraoke.store.NewKaraoke": [],
+  "NerdyKaraoke.view.Issues": [],
   "NerdyKaraoke.view.Main": [],
   "NerdyKaraoke.view.Submit": [],
   "NerdyKaraoke.view.TrackContainer": [],
@@ -1402,12 +1404,16 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "NerdyKaraoke.controller.EventController": [],
+  "NerdyKaraoke.model.LyricsModel": [],
   "NerdyKaraoke.model.NewSongs": [],
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
   "NerdyKaraoke.store.Karaoke": [],
   "NerdyKaraoke.store.LyricsStore": [],
   "NerdyKaraoke.store.NewKaraoke": [],
+  "NerdyKaraoke.view.Issues": [
+    "widget.Issues"
+  ],
   "NerdyKaraoke.view.Main": [
     "widget.main"
   ],

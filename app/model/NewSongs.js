@@ -3,10 +3,10 @@ Ext.define('NerdyKaraoke.model.NewSongs', {
 
 	config: {
 		fields: [
-			{name: 'Artist', type: 'string'},
-			{name: 'Title', type: 'string'},
-			{name: 'addNew', type: 'string'},
-			{name: 'index', type: 'string'}
+			'Artist',
+			'Title',
+			'addNew',
+			'index'
 		]
 	}
 });

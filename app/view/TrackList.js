@@ -7,7 +7,8 @@ Ext.define('NerdyKaraoke.view.TrackList', {
         indexBar: true,
         sorted: true,
         infinite: true,
-        itemHeight: 48,
+        itemHeight: 45,
+        variableHeights: false,
         disableSelection: true,
         pinHeaders: true,
         cls: 'lizt',
@@ -19,23 +20,17 @@ Ext.define('NerdyKaraoke.view.TrackList', {
             direction: 'vertical',
             directionLock: true,
             indicators: false,
-            maxAbsoluteVelocity: 2.5,
+            maxAbsoluteVelocity: 1.5,
             momentumEasing: {
                 momentum: {
-                    acceleration: 60,
-                    friction: 0.70
+                    acceleration: 20,
+                    friction: 1.5
                 },
                 bounce: {
                     acceleration: 50,
                     springTension: .9
                 },
-                minVelocity: 1.5
-            }
-        },
-        listeners: {
-            element: 'element',
-            taphold: function() {
-                Ext.Msg.alert(' ', "<img src='hidden.png'>");
+                minVelocity: 0.5
             }
         }
 	}

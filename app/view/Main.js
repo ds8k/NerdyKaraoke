@@ -7,7 +7,6 @@ Ext.define('NerdyKaraoke.view.Main', {
         'Ext.MessageBox',
         'Ext.Panel',
         'Ext.Toolbar',
-        'Ext.event.publisher.Dom',
         'Ext.field.Search',
         'Ext.field.Email',
         'Ext.form.FieldSet',
@@ -60,7 +59,7 @@ Ext.define('NerdyKaraoke.view.Main', {
                             centered: true,
                             xtype: 'searchfield',
                             name: 'search',
-                            placeHolder: 'Search Track List'
+                            placeHolder: 'Nerdy Karaoke'
                         }
                     ]
                 },
@@ -97,6 +96,21 @@ Ext.define('NerdyKaraoke.view.Main', {
                 },
                 {
                     xtype: 'Submit'
+                }
+            ]
+        },
+        {
+            title: 'Issues',
+            slideButton: true,
+            items: [
+                {
+                    xtype: 'toolbar',
+                    docked: 'top',
+                    minHeight: '50px',
+                    title: 'Issues'
+                },
+                {
+                    xtype: 'Issues'
                 }
             ]
         }]

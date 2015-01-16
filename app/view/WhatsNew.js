@@ -7,7 +7,7 @@ Ext.define('NerdyKaraoke.view.WhatsNew', {
         grouped: true,
         infinite: true,
         disableSelection: true,
-        itemHeight: 48,
+        variableHeights: true,
         cls: 'lizt',
         itemTpl: '{Artist} - {Title}',
         store: 'NewKaraoke'

@@ -10,7 +10,13 @@
     will need to resolve manually.
 */
 
-Ext.Loader.setConfig({enabled:true});
+Ext.Loader.setConfig( 
+    {
+        enabled: true,
+        disableCaching: true
+    }
+);
+
 Ext.Loader.setPath('Ext.ux', './ux');
 
 Ext.application({
@@ -22,8 +28,7 @@ Ext.application({
 
     stores: [
         'Karaoke',
-        'NewKaraoke'//,
-        //'LyricsStore'
+        'NewKaraoke'
     ],
 
     models: [
@@ -42,7 +47,8 @@ Ext.application({
         'TrackContainer',
             'TrackList',
             'TrackLyrics',
-        'Submit'
+        'Submit',
+        'Issues'
     ],
 
     icon: {
@@ -61,7 +67,8 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('NerdyKaraoke.view.Main'));
-        Ext.Viewport.setMasked({xtype:'loadmask',message:'Loading...'});
+        Ext.Viewport.show({ type: 'fade' });
+        Ext.Viewport.setMasked({ xtype:'loadmask', message:'Loading...'} );
     },
 
     onUpdated: function() {
@@ -77,6 +84,7 @@ Ext.application({
     }
 });
 
+//Let people use their mousewheel or trackpad to scroll
 if(Ext.os.deviceType === 'Desktop') {
     document.addEventListener('mousewheel', function(e){ 
         var el = e.target; 

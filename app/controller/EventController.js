@@ -4,39 +4,48 @@ Ext.define('NerdyKaraoke.controller.EventController', {
     config: {
 		refs: {
             SearchTracks: 'searchfield[name=search]',
-            // LyricsItemTap: 'list[xtype=TrackList]',
-            // ViewLyrics: 'button[action=viewlyrics]',
-            SubmitRequest: 'button[action=submitRequest]'
+            LyricsItemTap: 'list[xtype=TrackList]',
+            SubmitRequest: 'button[action=submitRequest]',
+            ContactMe: 'button[action=contactMe]',
+            BackButton: 'button[action=goBack]'
         },
         control: {
             SearchTracks: {
                 keyup: 'searchTrackList',
                 clearicontap: 'clearTrackList'
             },
-            // LyricsItemTap: {
-            // 	itemtap: 'onTrackTap'
-            // },
-            // ViewLyrics: {
-            // 	tap: 'onViewLyricsTap'
-            // },
+            LyricsItemTap: {
+            	itemtap: 'onTrackTap'
+            },
             SubmitRequest: {
             	tap: 'onSubmitRequest'
+            },
+            ContactMe: {
+                tap: 'onContactMe'
+            },
+            BackButton: {
+                tap: 'onBackButton'
             }
         }
     },
 
     searchTrackList: function(field, e) {
+        //If the enter key isn't pressed do nothing
     	if(e.event.keyCode != 13) {
             return
         }
 
+        //If looking at lyrics, clear HTML and set tracklist tab
+        this.onBackButton();
+
+        //Reset list position to top
         Ext.ComponentQuery.query('list[xtype=TrackList]')[0].getScrollable().getScroller().scrollTo(0,0);
         Ext.ComponentQuery.query('list[xtype=TrackList]')[0].refresh();
 
         var store = Ext.getStore('Karaoke');
         var value = field.getValue();
 
-        //first clear any current filters on thes tore
+        //Clear any current filters on the store
         store.clearFilter();
 
         //check if a value is set first, as if it isnt we dont have to do anything
@@ -97,43 +106,46 @@ Ext.define('NerdyKaraoke.controller.EventController', {
     },
 
     clearTrackList: function() {
-    	Ext.ComponentQuery.query('list[xtype=TrackList]')[0].getScrollable().getScroller().scrollTo(0,0);
+    	//Reset the position of the list
+        Ext.ComponentQuery.query('list[xtype=TrackList]')[0].getScrollable().getScroller().scrollTo(0,0);
 		Ext.ComponentQuery.query('list[xtype=TrackList]')[0].refresh();
-		Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(0);
+
+        //If the user was looking at lyrics, clear the HTML and set tab back to tracklist
+        this.onBackButton();
+
+        //Remove the applied filter
 		Ext.getStore('Karaoke').clearFilter();
     },
 
     onTrackTap: function(list, index, target, record) {
-    	var store = Ext.getStore('LyricsStore').getData().items[0].raw;
+        //Set a load mask to prevent the user from dicking around too much before lyrics are done loading
+        Ext.Viewport.mask({
+            xtype: 'loadmask',
+            message: ''
+        });
+
     	var tabpanel = Ext.ComponentQuery.query('TrackContainer')[0];
     	var detailsTab = tabpanel.getInnerItems()[1];
-    	var button = Ext.ComponentQuery.query('button[action=viewlyrics]')[0];
-        console.log('yo');
-        this.setLyricUrl(Ext.getStore('LyricsStore'), record);
+        var searchLyrics = Ext.ComponentQuery.query('button[action=viewlyrics]')[0];
 
-    	detailsTab.down('container').setHtml(
-    		'<h3>' + record.data.Artist + '</br>' + record.data.Title + '</h3>' + 
-    		store.lyrics.replace(/\n/g, '</br>')
+        //Set the HTML for lyrics
+    	Ext.ComponentQuery.query('panel[name=lyricsbox]')[0].setHtml(
+            '<div class="lyricsFrame"><iframe src="http://lyrics.wikia.com/' + 
+            record.data.Artist + ':' + record.data.Title + '"></iframe></div>'
     	);
 
+        //Set lyrics tab as active view
     	tabpanel.setActiveItem(1);
 
-    	if(store.lyrics.toUpperCase() != 'NOT FOUND') {
-    		button.setText('View Full Lyrics');
-    	} else {
-    		button.setText('Search Lyrics');
-    	}
-    },
+        //Set the handler for the not found button in the event lyrics aren't available
+        searchLyrics.setHandler(function() {
+            window.open('https://www.google.com/search?q=' + record.data.Artist + ' ' + record.data.Title + ' lyrics', '_system');
+        });
 
-    onViewLyricsTap: function(button) {
-    	var store = Ext.getStore('LyricsStore').getData().items[0].raw;
-        var record = button.up('container').getRecord();
-
-    	if(store.lyrics.toUpperCase() != 'NOT FOUND') {
-    		window.location(store.url);
-    	} else {
-    		window.open('https://www.google.com/search?q=' + store.artist + ' ' + store.song + ' lyrics', '_system');
-    	}
+        //Set a 2 second timeout for loading the page
+        setTimeout(function() {
+            Ext.Viewport.unmask();
+        }, 2000);
     },
 
     onSubmitRequest: function(button) {
@@ -143,10 +155,15 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         var store = Ext.getStore('Karaoke');
         var id;
 
+        //Check to see if the form is filled out
         if(errors.isValid()) {
+            //Find the middle point of the karaoke store
             var index = Math.round(store.getTotalCount()/2);
+
+            //See if we have this damn song already
             id = this.searchForMatchingTrack(store.getData().all, index, form.getValues(), store.getTotalCount());
 
+            //If we do, yell at the user
         	if (id) {
         		Ext.Msg.confirm(
         			'Whoops!', 
@@ -161,11 +178,13 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         				}, 50);
         			}
         		);
+            //Form is valid and we don't have the song - send request
         	} else {
 	            form.submit();
 	            Ext.Msg.alert('Thanks!');
 	            form.reset();
         	}
+        //Form isn't valid - yell at user
         } else {
             var message = '';
 
@@ -177,73 +196,89 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         }
     },
 
+    //Sends me an email. Self explanatory
+    onContactMe: function(button) {
+        document.location.href = 'mailto:darksonic8000@gmail.com?subject=Karaoke%20Issues';
+    },
+
+    //Called when user taps back button. Clears HTML and sets tracklist as main view
+    onBackButton: function(button) {
+        Ext.ComponentQuery.query('panel[name=lyricsbox]')[0].setHtml('');
+        Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(0);
+    },
+
+    //Binary search function to check if we already have a requested song
     searchForMatchingTrack: function(storeData, index, value, totalCount) {
         var tries = 10,
             downIndex = 0, 
             upIndex = totalCount, 
             i, matched;
 
+        //I use a number of tries method to get as close to the requested artist and song as possible
         while(tries > 0) {
+            //If we don't have a match, the index needs to go up or down
             if(value.artist.toUpperCase() != storeData[index].raw.Artist.toUpperCase() && value.title.toUpperCase() != storeData[index].raw.Title.toUpperCase()) {
+                //Artist is higher than the index. Move middle index up and down index to the previous middle
                 if(value.artist.toUpperCase() > storeData[index].raw.Artist.toUpperCase()) {
                     downIndex = index;
                     index = Math.round((upIndex - index)/2);
+                //Artist is lower - Move down in the store. You get the idea
                 } else if (value.artist.toUpperCase() < storeData[index].raw.Artist.toUpperCase()) {
                     upIndex = index;
                     index = Math.round((index - downIndex)/2);
+                //If we found the artist then don't waste time, get to checking song titles
                 } else {
                     tries = 0;
                 }
+            //We found the artist and the song!
             } else {
                 tries = 0;
             }
 
+            //Decrement tries
             tries = tries-1;
         }
 
+        //Now we start moving up or down one by one instead of cutting the list in half.
+        //Requested artist is higher up in the list - move up incrementally
         if(value.artist.toUpperCase() > storeData[index].raw.Artist.toUpperCase()) {
+            console.log('going up');
             for(i = index; !matched && i < upIndex; i++) {
                 if(value.artist.toUpperCase() === storeData[i].raw.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].raw.Title.toUpperCase()) {
                     matched = storeData[i].raw;
                 }
             }
+        //Requested artist is lower, move down the list
         } else if (value.artist.toUpperCase() < storeData[index].raw.Artist.toUpperCase()) {
+            console.log('going down');
             for(i = index; !matched && i > downIndex; i--) {
                 if(value.artist.toUpperCase() === storeData[i].raw.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].raw.Title.toUpperCase()) {
                     matched = storeData[i].raw;
                 }
             }
+        //Artist is a match, we only have to check song titles
         } else {
+            //Requested song title is higher up, go up
             if(value.title.toUpperCase() > storeData[index].raw.Title.toUpperCase()) {
                 for(i = index; !matched && i < upIndex; i++) {
                     if(value.artist.toUpperCase() === storeData[i].raw.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].raw.Title.toUpperCase()) {
                         matched = storeData[i].raw;
                     }
                 }
+            //Request song title is lower, go down
             } else if(value.title.toUpperCase() < storeData[index].raw.Title.toUpperCase()) {
                 for(i = index; !matched && i > downIndex; i--) {
                     if(value.artist.toUpperCase() === storeData[i].raw.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].raw.Title.toUpperCase()) {
                         matched = storeData[i].raw;
                     }
                 }
+            //We found the artist and the song
             } else {
                 matched = storeData[index].raw;
             }
         }
+
+        //Return what we found
         return matched;
-    },
-
-    setLyricUrl: function(store, record) {
-        Ext.Viewport.mask({
-            xtype: 'loadmask',
-            message: ''
-        });
-
-        store.getProxy().setUrl(store.getBaseUrl() + record.data.Artist + '&song=' + record.data.Title + '&fmt=json');
-        console.log(store.getProxy().getUrl());
-        store.load();
-        store.on('load', function() {
-            Ext.Viewport.unmask();
-        });
     }
 });

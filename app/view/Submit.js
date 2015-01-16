@@ -4,6 +4,7 @@ Ext.define('NerdyKaraoke.view.Submit', {
 
 	config: {
 		url: 'contact.php',
+		scrollable: null,
         items:[
 	        {
 	            xtype: 'fieldset',
@@ -22,29 +23,32 @@ Ext.define('NerdyKaraoke.view.Submit', {
 		            {
 		                xtype: 'textfield',
 		                name: 'artist',
-		                label: 'Artist',
-		                placeHolder: 'Freak Nasty'
+		                label: 'Artist'
 		            },
 		            {
 		                xtype: 'textfield',
 		                name: 'title',
-		                label: 'Title',
-		                placeHolder: 'Da Dip'
+		                label: 'Title'
 		            }
 	            ]
 	        },
 	        {
-	            xtype: 'toolbar',
-	            layout: { 
-	                pack: 'center' 
-	            },
-	            ui: 'plain',
-	            items: {
-	                xtype: 'button',
+	        	xtype: 'container',
+                flex: 1,
+                layout: {
+                    type: 'vbox',
+                    pack: 'middle',
+                    align: 'stretch'
+                },
+                defaults: {
+                    margin: '0 0.75em 0.75em',
+                    xtype: 'button'
+                },
+                items: {
 	                text: 'Send',
 	                ui: 'confirm',
 	                action: 'submitRequest'
-	            }
+				}
 	        }
 		]
 	}
