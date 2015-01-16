@@ -422,11 +422,7 @@
 {"Artist":"Amy Winehouse","Title":"Our Day Will Come"},
 {"Artist":"Amy Winehouse","Title":"Rehab"},
 {"Artist":"Amy Winehouse","Title":"Tears Dry On Their Own"},
-<<<<<<< HEAD
-{"Artist":"Amy Winehouse","Title":"You Know I‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√†√∂‚Äö√†√á‚Äö√Ñ√∂‚àö‚Ä†‚àö‚àÇ‚Äö√†√∂‚àö¬¥‚Äö√Ñ√∂‚àö‚Ä†‚àö‚àÇ¬¨¬®‚Äö√Ñ¬¢m No Good"},
-=======
-{"Artist":"Amy Winehouse","Title":"You Know I‚Äôm No Good"},
->>>>>>> FETCH_HEAD
+{"Artist":"Amy Winehouse","Title":"You Know I'm No Good"},
 {"Artist":"Ana Johnsson","Title":"Don't Cry For Pain"},
 {"Artist":"Ana Johnsson","Title":"We Are"},
 {"Artist":"Anastacia","Title":"Cowboys & Kisses"},
@@ -1473,11 +1469,7 @@
 {"Artist":"Cabaret","Title":"If I Love Again"},
 {"Artist":"Cabaret","Title":"Let's Fall In Love"},
 {"Artist":"Cabaret","Title":"Maybe This Time"},
-<<<<<<< HEAD
-{"Artist":"Cage The Elephant","Title":"Ain‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√†√∂‚Äö√†√á‚Äö√Ñ√∂‚àö‚Ä†‚àö‚àÇ‚Äö√†√∂‚àö¬¥‚Äö√Ñ√∂‚àö‚Ä†‚àö‚àÇ¬¨¬®‚Äö√Ñ¬¢t No Rest For The Wicked"},
-=======
-{"Artist":"Cage The Elephant","Title":"Ain‚Äôt No Rest For The Wicked"},
->>>>>>> FETCH_HEAD
+{"Artist":"Cage The Elephant","Title":"Ain't No Rest For The Wicked"},
 {"Artist":"Cage The Elephant","Title":"Shake Me Down"},
 {"Artist":"Cake","Title":"Distance"},
 {"Artist":"Cake","Title":"Let Me Go"},
@@ -1501,27 +1493,15 @@
 {"Artist":"Calvin Harris","Title":"Under Control"},
 {"Artist":"Calvin Harris","Title":"We Found Love"},
 {"Artist":"Camelot","Title":"Before I Gaze At You Again"},
-<<<<<<< HEAD
-{"Artist":"Camelot","Title":"C' Est Moi¬¨¬®¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√Ñ√∂‚àö√ë‚Äö√Ñ‚Ä†"},
-{"Artist":"Camelot","Title":"Camelot¬¨¬®¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√Ñ√∂‚àö√ë‚Äö√Ñ‚Ä†"},
+{"Artist":"Camelot","Title":"C' Est Moi"},
+{"Artist":"Camelot","Title":"Camelot"},
 {"Artist":"Camelot","Title":"Follow Me"},
-{"Artist":"Camelot","Title":"How To Handle A Woman¬¨¬®¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√Ñ√∂‚àö√ë‚Äö√Ñ‚Ä†¬¨¬®¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√Ñ√∂‚àö√ë‚Äö√Ñ‚Ä†"},
+{"Artist":"Camelot","Title":"How To Handle A Woman"},
 {"Artist":"Camelot","Title":"I Loved You Once In Silence"},
-{"Artist":"Camelot","Title":"I Wonder What The King Is Doing Tonight¬¨¬®¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√Ñ√∂‚àö√ë‚Äö√Ñ‚Ä†¬¨¬®¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√Ñ√∂‚àö√ë‚Äö√Ñ‚Ä†"},
+{"Artist":"Camelot","Title":"I Wonder What The King Is Doing Tonight"},
 {"Artist":"Camelot","Title":"If Ever I Would Leave You"},
-{"Artist":"Camelot","Title":"If Ever I Would Leave You¬¨¬®¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√Ñ√∂‚àö√ë‚Äö√Ñ‚Ä†"},
-{"Artist":"Camelot","Title":"Simple Joys Of Maidenhood¬¨¬®¬¨¬Æ¬¨¬®¬¨√Ü‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√Ñ√∂‚àö√ë‚Äö√Ñ‚Ä†"},
-=======
-{"Artist":"Camelot","Title":"C' Est Moi¬†"},
-{"Artist":"Camelot","Title":"Camelot¬†"},
-{"Artist":"Camelot","Title":"Follow Me"},
-{"Artist":"Camelot","Title":"How To Handle A Woman¬†¬†"},
-{"Artist":"Camelot","Title":"I Loved You Once In Silence"},
-{"Artist":"Camelot","Title":"I Wonder What The King Is Doing Tonight¬†¬†"},
 {"Artist":"Camelot","Title":"If Ever I Would Leave You"},
-{"Artist":"Camelot","Title":"If Ever I Would Leave You¬†"},
-{"Artist":"Camelot","Title":"Simple Joys Of Maidenhood¬†"},
->>>>>>> FETCH_HEAD
+{"Artist":"Camelot","Title":"Simple Joys Of Maidenhood"},
 {"Artist":"Camelot","Title":"The Lusty Month Of May"},
 {"Artist":"Camelot","Title":"What Do The Simple Folk Do"},
 {"Artist":"Cameo","Title":"Candy"},
@@ -2387,7 +2367,6 @@
 {"Artist":"Disclosure","Title":"You And Me"},
 {"Artist":"Disco Tex And The Sex O Letts","Title":"I Wanna Dance Wit Choo"},
 {"Artist":"Disturbed","Title":"Another Way To Die"},
-<<<<<<< HEAD
 {"Artist":"Disturbed","Title":"Conflict"},
 {"Artist":"Disturbed","Title":"Down With Sickness"},
 {"Artist":"Disturbed","Title":"Fear"},
@@ -2402,8 +2381,6 @@
 {"Artist":"Disturbed","Title":"Violence Fetish"},
 {"Artist":"Disturbed","Title":"Voices"},
 {"Artist":"Disturbed","Title":"Want"},
-=======
->>>>>>> FETCH_HEAD
 {"Artist":"Divine","Title":"You Think You're A Man"},
 {"Artist":"Divinyls","Title":"I Touch Myself"},
 {"Artist":"Dixie Chicks","Title":"Not Ready To Make Nice"},
@@ -5660,11 +5637,7 @@
 {"Artist":"McFly","Title":"Please Please"},
 {"Artist":"McFly","Title":"Room On The 3rd Floor"},
 {"Artist":"McFly","Title":"Shine A Light"},
-<<<<<<< HEAD
-{"Artist":"McFly","Title":"Sorry‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√†√∂‚Äö√†√á‚Äö√Ñ√∂‚àö‚Ä†‚àö‚àÇ‚Äö√†√∂‚àö¬¥‚Äö√Ñ√∂‚àö‚Ä†‚àö‚àÇ¬¨¬®‚Äö√Ñ¬¢s Not Good Enough"},
-=======
-{"Artist":"McFly","Title":"Sorry‚Äôs Not Good Enough"},
->>>>>>> FETCH_HEAD
+{"Artist":"McFly","Title":"Sorry's Not Good Enough"},
 {"Artist":"McFly","Title":"That Girl"},
 {"Artist":"McFly","Title":"Ultraviolet"},
 {"Artist":"Meat Loaf","Title":"Objects In The Rear View Mirror"},
@@ -6673,11 +6646,7 @@
 {"Artist":"Pocahontas","Title":"Just Around The Riverbend"},
 {"Artist":"Poison","Title":"Every Rose Has It's Thorn"},
 {"Artist":"Poison","Title":"I Want Action"},
-<<<<<<< HEAD
-{"Artist":"Poison","Title":"Nothin‚Äö√Ñ√∂‚àö√ë‚àö‚àÇ‚Äö√†√∂‚àö√´‚Äö√†√∂‚Äö√†√á‚Äö√Ñ√∂‚àö‚Ä†‚àö‚àÇ‚Äö√†√∂‚àö¬¥‚Äö√Ñ√∂‚àö‚Ä†‚àö‚àÇ¬¨¬®‚Äö√Ñ¬¢ But A Good Time"},
-=======
-{"Artist":"Poison","Title":"Nothin‚Äô But A Good Time"},
->>>>>>> FETCH_HEAD
+{"Artist":"Poison","Title":"Nothin' But A Good Time"},
 {"Artist":"Poison","Title":"Talk Dirty To Me"},
 {"Artist":"Poison","Title":"Your Mama Don't Dance"},
 {"Artist":"Pokemon","Title":"Theme Song"},
@@ -8937,11 +8906,8 @@
 {"Artist":"The Muppets","Title":"Bein' Green"},
 {"Artist":"The Muppets","Title":"Life's A Happy Song"},
 {"Artist":"The Muppets","Title":"Man or Muppet"},
-<<<<<<< HEAD
 {"Artist":"The Muppets","Title":"Manah Manah"},
 {"Artist":"The Muppets","Title":"Rainbow Connection"},
-=======
->>>>>>> FETCH_HEAD
 {"Artist":"The Neighbourhood","Title":"Sweater Weather"},
 {"Artist":"The New Seekers","Title":"I'd Like To Teach The World To Sing"},
 {"Artist":"The New Seekers","Title":"Never Ending Song Of Love"},
@@ -9095,14 +9061,11 @@
 {"Artist":"The Similou","Title":"All This Love"},
 {"Artist":"The Simpsons","Title":"Do The Bart Man"},
 {"Artist":"The Sisters Of Mercy","Title":"Corrosion"},
-<<<<<<< HEAD
 {"Artist":"The Smashing Pumpkins","Title":"1979"},
 {"Artist":"The Smashing Pumpkins","Title":"33"},
 {"Artist":"The Smashing Pumpkins","Title":"Cherub Rock"},
 {"Artist":"The Smashing Pumpkins","Title":"The End Is The Beginning Is The End"},
 {"Artist":"The Smashing Pumpkins","Title":"Today"},
-=======
->>>>>>> FETCH_HEAD
 {"Artist":"The Smiths","Title":"Heaven Knows I'm Miserable Now"},
 {"Artist":"The Smiths","Title":"Panic"},
 {"Artist":"The Smiths","Title":"There's A Light That Never Goes Out"},
