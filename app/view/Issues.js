@@ -3,7 +3,6 @@ Ext.define('NerdyKaraoke.view.Issues', {
     xtype: 'Issues',
 
     config: {
-    	baseCls: 'WhitePanelBackground',
         scrollable: {
             direction: 'vertical',
             directionLock: true

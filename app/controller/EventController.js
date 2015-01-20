@@ -172,17 +172,58 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         				Ext.defer(function() {
         					if(buttonText === 'yes') {
 	        					form.submit();
-					            Ext.Msg.alert('Thanks!');
-					            form.reset();
-	        				}
+
+					            Ext.Msg.confirm(
+                                    'Thanks!',
+                                    'Have more requests?',
+                                    function(buttonText) {
+                                        if(buttonText === 'yes') {
+                                            form.setValues({
+                                                artist: '',
+                                                title: ''
+                                            });
+                                        } else { 
+                                            form.reset();
+                                        }
+                                    }
+                                );
+	        				} else {
+                                Ext.Msg.confirm(
+                                    '',
+                                    'Have more requests?',
+                                    function(buttonText) {
+                                        if(buttonText === 'yes') {
+                                            form.setValues({
+                                                artist: '',
+                                                title: ''
+                                            });
+                                        } else { 
+                                            form.reset();
+                                        }
+                                    }
+                                );
+                            }
         				}, 50);
         			}
         		);
             //Form is valid and we don't have the song - send request
         	} else {
 	            form.submit();
-	            Ext.Msg.alert('Thanks!');
-	            form.reset();
+
+                Ext.Msg.confirm(
+                    'Thanks!',
+                    'Have more requests?',
+                    function(buttonText) {
+                        if(buttonText === 'yes') {
+                            form.setValues({
+                                artist: '',
+                                title: ''
+                            });
+                        } else { 
+                            form.reset();
+                        }
+                    }
+                );
         	}
         //Form isn't valid - yell at user
         } else {

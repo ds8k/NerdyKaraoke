@@ -44,75 +44,78 @@ Ext.define('NerdyKaraoke.view.Main', {
             xtype: 'container'
         },
         
-        items: [{
+        items: [
+            {
 
-            title: 'Track List',
-            slideButton: true,
+                title: 'Track List',
+                slideButton: true,
 
-            items: [
-                {
-                    xtype: 'toolbar',
-                    docked: 'top',
-                    minHeight: '50px',
-                    items: [
-                        {
-                            centered: true,
-                            xtype: 'searchfield',
-                            name: 'search',
-                            placeHolder: 'Nerdy Karaoke'
-                        }
-                    ]
-                },
-                {
-                    xtype: 'TrackContainer'
-                }
-            ]
-        },
-        {
-            title: 'What\'s New',
-            slideButton: true,
+                items: [
+                    {
+                        xtype: 'toolbar',
+                        docked: 'top',
+                        minHeight: '50px',
+                        items: [
+                            {
+                                centered: true,
+                                xtype: 'searchfield',
+                                cls: 'customSearch',
+                                name: 'search',
+                                placeHolder: 'Nerdy Karaoke'
+                            }
+                        ]
+                    },
+                    {
+                        xtype: 'TrackContainer'
+                    }
+                ]
+            },
+            {
+                title: 'What\'s New',
+                slideButton: true,
 
-            items: [
-                {
-                    xtype: 'toolbar',
-                    docked: 'top',
-                    minHeight: '50px',
-                    title: 'What\'s New'
-                },
-                {
-                    xtype: 'WhatsNew'
-                }
-            ]
-        },
-        {
-            title: 'Send A Request',
-            slideButton: true,
-            items: [
-                {
-                    xtype: 'toolbar',
-                    docked: 'top',
-                    minHeight: '50px',
-                    title: 'Send A Request'
-                },
-                {
-                    xtype: 'Submit'
-                }
-            ]
-        },
-        {
-            title: 'Issues',
-            slideButton: true,
-            items: [
-                {
-                    xtype: 'toolbar',
-                    docked: 'top',
-                    minHeight: '50px',
-                    title: 'Issues'
-                },
-                {
-                    xtype: 'Issues'
-                }
-            ]
-        }]
+                items: [
+                    {
+                        xtype: 'toolbar',
+                        docked: 'top',
+                        minHeight: '50px',
+                        title: 'What\'s New'
+                    },
+                    {
+                        xtype: 'WhatsNew'
+                    }
+                ]
+            },
+            {
+                title: 'Send A Request',
+                slideButton: true,
+                items: [
+                    {
+                        xtype: 'toolbar',
+                        docked: 'top',
+                        minHeight: '50px',
+                        title: 'Send A Request'
+                    },
+                    {
+                        xtype: 'Submit'
+                    }
+                ]
+            },
+            {
+                title: 'Issues',
+                slideButton: true,
+                items: [
+                    {
+                        xtype: 'toolbar',
+                        docked: 'top',
+                        minHeight: '50px',
+                        title: 'Issues'
+                    },
+                    {
+                        xtype: 'Issues'
+                    }
+                ]
+            }
+        ]
     }
 });
