@@ -87,9 +87,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
             maxDrag: null,
             itemTpl: '{title}',
             grouped: false,
-            scrollable: false,
-            maxHeight: '100%',
-            height: '13.03em',
+            scrollable: true,
             items: [{
                 xtype: 'toolbar',
                 docked: 'top',

@@ -8,7 +8,7 @@ Ext.define('NerdyKaraoke.view.TrackList', {
         sorted: true,
         infinite: true,
         itemHeight: 45,
-        variableHeights: false,
+        variableHeights: true,
         disableSelection: true,
         pinHeaders: true,
         cls: 'lizt',

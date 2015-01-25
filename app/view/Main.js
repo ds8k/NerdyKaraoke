@@ -11,13 +11,14 @@ Ext.define('NerdyKaraoke.view.Main', {
         'Ext.field.Email',
         'Ext.form.FieldSet',
         'Ext.form.Panel',
-        'Ext.Button'
+        'Ext.Button',
+        'Ext.Img'
     ],
     
     config: {
         fullscreen: true,
-        slideSelector: 'x-toolbar',
-        containerSlideDelay: 10,
+        slideSelector: false,
+        containerSlideDelay: -1,
         selectSlideDuration: 200,
         itemMask: true,
         slideButtonDefaults: {
@@ -46,8 +47,25 @@ Ext.define('NerdyKaraoke.view.Main', {
         
         items: [
             {
+                title: 'Home',
+                slideButton: true,
+                items: [
+                    {
+                        xtype: 'toolbar',
+                        docked: 'top',
+                        minHeight: '50px',
+                        title: 'Nerdy Karaoke'
+                    },
+                    {
+                        xtype: 'image',
+                        src: 'back2.png',
+                        fullscreen: true
+                    }
+                ]
+            },
+            {
 
-                title: 'Track List',
+                title: 'Search',
                 slideButton: true,
 
                 items: [
@@ -61,7 +79,7 @@ Ext.define('NerdyKaraoke.view.Main', {
                                 xtype: 'searchfield',
                                 cls: 'customSearch',
                                 name: 'search',
-                                placeHolder: 'Nerdy Karaoke'
+                                placeHolder: 'Search All Songs'
                             }
                         ]
                     },

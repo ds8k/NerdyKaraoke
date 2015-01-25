@@ -15,6 +15,7 @@ Ext.application({
     ],
 
     stores: [
+        'Alphabet',
         'Karaoke',
         'NewKaraoke'
     ],
@@ -33,6 +34,7 @@ Ext.application({
         'Main',
         'WhatsNew',
         'TrackContainer',
+            'TrackSearch',
             'TrackList',
             'TrackLyrics',
         'Submit',

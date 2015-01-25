@@ -40,6 +40,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.ux.TabMenuButton": "touch/src/ux/TabMenuButton.js",
   "Ext.ux.device": "touch/src/ux/device",
   "Ext.ux.parse": "touch/src/ux/parse",
+  "Ext.ux.touch.SwipeTabs": "ux/src/SwipeTabs.js",
   "NerdyKaraoke": "app"
 });
 
@@ -669,6 +670,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.parse.association.Pointer": [],
   "Ext.ux.parse.association.Relation": [],
   "Ext.ux.slidenavigation.View": [],
+  "Ext.ux.touch.SwipeTabs": [],
   "Ext.viewport.Android": [],
   "Ext.viewport.Default": [],
   "Ext.viewport.Ios": [],
@@ -680,6 +682,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "NerdyKaraoke.model.NewSongs": [],
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
+  "NerdyKaraoke.store.Alphabet": [],
   "NerdyKaraoke.store.Karaoke": [],
   "NerdyKaraoke.store.NewKaraoke": [],
   "NerdyKaraoke.view.Issues": [],
@@ -688,6 +691,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "NerdyKaraoke.view.TrackContainer": [],
   "NerdyKaraoke.view.TrackList": [],
   "NerdyKaraoke.view.TrackLyrics": [],
+  "NerdyKaraoke.view.TrackSearch": [],
   "NerdyKaraoke.view.WhatsNew": []
 });
 
@@ -1416,6 +1420,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.slidenavigation.View": [
     "widget.slidenavigationview"
   ],
+  "Ext.ux.touch.SwipeTabs": [
+    "plugin.swipetabs"
+  ],
   "Ext.viewport.Android": [],
   "Ext.viewport.Default": [
     "widget.viewport"
@@ -1427,6 +1434,7 @@ Ext.ClassManager.addNameAliasMappings({
   "NerdyKaraoke.model.NewSongs": [],
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
+  "NerdyKaraoke.store.Alphabet": [],
   "NerdyKaraoke.store.Karaoke": [],
   "NerdyKaraoke.store.NewKaraoke": [],
   "NerdyKaraoke.view.Issues": [
@@ -1446,6 +1454,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "NerdyKaraoke.view.TrackLyrics": [
     "widget.TrackLyrics"
+  ],
+  "NerdyKaraoke.view.TrackSearch": [
+    "widget.TrackSearch"
   ],
   "NerdyKaraoke.view.WhatsNew": [
     "widget.WhatsNew"

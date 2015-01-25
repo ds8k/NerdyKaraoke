@@ -5,14 +5,8 @@ Ext.define('NerdyKaraoke.store.NewKaraoke', {
 		autoLoad: true,
 		model: 'NerdyKaraoke.model.NewSongs',
 		sorters: 'Artist',
-        grouper: {
-            sortProperty: 'index',
-            groupFn: function(record) {
-                return record.get('addNew');
-            }
-        },
         proxy: {
-            noCache: false,
+            noCache: true,
             enablePagingParams: false,
             type: 'ajax',
             url: 'new.json',
@@ -23,6 +17,13 @@ Ext.define('NerdyKaraoke.store.NewKaraoke', {
             }
         },
 
+        grouper: {
+            sortProperty: 'index',
+            groupFn: function(record) {
+                return record.get('addNew');
+            }
+        },
+        
 	    listeners: {
 	        load: {
 	            fn: function(){
