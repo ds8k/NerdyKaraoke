@@ -57,9 +57,29 @@ Ext.define('NerdyKaraoke.view.Main', {
                         title: 'Nerdy Karaoke'
                     },
                     {
-                        xtype: 'image',
-                        src: 'back2.png',
-                        fullscreen: true
+                        xtype: 'container',
+                        items: [
+                            {
+                                xtype: 'component',
+                                styleHtmlContent: true,
+                                html:   '<center><h2>Welcome to<br>Nerdy Karaoke!</h2><p>Hosted by Dick Steel</center>'
+                            },
+                            {
+                                xtype: 'component',
+                                styleHtmlContent: true,
+                                html: '<center>Hit the menu button to navigate.</center>'
+                            },
+                            {
+                                xtype: 'component',
+                                styleHtmlContent: true,
+                                html: '<center>Swipe to get back to search options.</center>'
+                            },
+                            {
+                                xtype: 'component',
+                                styleHtmlContent: true,
+                                html: '<center>Tap a song to view the lyrics.</center>'
+                            }
+                        ]
                     }
                 ]
             },
