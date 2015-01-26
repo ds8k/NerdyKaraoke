@@ -4,7 +4,7 @@ Ext.define('NerdyKaraoke.view.Submit', {
 
 	config: {
 		url: 'contact.php',
-		scrollable: null,
+		scrollable: true,
         items:[
 	        {
 	            xtype: 'fieldset',

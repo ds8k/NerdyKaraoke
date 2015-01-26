@@ -62,7 +62,15 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             var value = field.getValue();
 
             //Clear any current filters on the store
-            //store.clearFilter();
+
+            var placeHolder = Ext.ComponentQuery.query('searchfield[name=search]')[0].getPlaceHolder();
+
+            if(placeHolder === 'Search All Songs') {
+                store.clearFilter();
+            } else {
+                placeHolder = placeHolder.slice(14);
+                this.onFilterTap(null, null, null, placeHolder);
+            }
 
             //check if a value is set first, as if it isnt we dont have to do anything
             if (value) {
@@ -158,7 +166,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
         //Set the HTML for lyrics
     	Ext.ComponentQuery.query('panel[name=lyricsbox]')[0].setHtml(
-            '<div class="lyricsFrame"><iframe sandbox="allow-same-origin allow-scripts" src="http://lyrics.wikia.com/' + 
+            '<div class="lyricsFrame"><iframe seamless sandbox="allow-same-origin allow-scripts" src="http://lyrics.wikia.com/' + 
             record.data.Artist + ':' + record.data.Title + '"></iframe></div>'
     	);
 

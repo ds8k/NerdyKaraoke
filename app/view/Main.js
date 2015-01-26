@@ -58,6 +58,7 @@ Ext.define('NerdyKaraoke.view.Main', {
                     },
                     {
                         xtype: 'container',
+                        scrollable: true,
                         items: [
                             {
                                 xtype: 'component',
