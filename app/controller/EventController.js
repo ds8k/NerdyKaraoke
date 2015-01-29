@@ -61,6 +61,10 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             var store = Ext.getStore('Karaoke');
             var value = field.getValue();
 
+            if(!store.isLoaded()) {
+                store.load();
+            }
+
             //Clear any current filters on the store
 
             var placeHolder = Ext.ComponentQuery.query('searchfield[name=search]')[0].getPlaceHolder();
@@ -182,10 +186,6 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         setTimeout(function() {
             Ext.Viewport.unmask();
         }, 2000);
-
-        setTimeout(function() {
-            window.frames[0].stop();
-        }, 3000);
     },
 
     onSubmitRequest: function(button) {
@@ -289,8 +289,12 @@ Ext.define('NerdyKaraoke.controller.EventController', {
     },
 
     onViewTracks: function(button) {
+        var store = Ext.getStore('Karaoke');
         Ext.ComponentQuery.query('searchfield[name=search]')[0].setPlaceHolder('Search All Songs');
-        Ext.getStore('Karaoke').clearFilter();
+        if(!store.isLoaded()) {
+            store.load();
+        }
+        store.clearFilter();
         Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(1);
     },
 
@@ -299,6 +303,10 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(1);
         Ext.ComponentQuery.query('list[xtype=TrackList]')[0].getScrollable().getScroller().scrollTo(0,0);
         Ext.ComponentQuery.query('list[xtype=TrackList]')[0].refresh();
+
+        if(!store.isLoaded()) {
+            store.load();
+        }
 
         if(item.data) {
             item = item.data.text;

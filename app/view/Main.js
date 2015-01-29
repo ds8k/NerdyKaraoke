@@ -88,7 +88,6 @@ Ext.define('NerdyKaraoke.view.Main', {
 
                 title: 'Search',
                 slideButton: true,
-
                 items: [
                     {
                         xtype: 'toolbar',

@@ -109,16 +109,6 @@ $include-default-icons: false;
    background-color: #CBCBCB;
 }
 
-.centerText {
-  width: 50%;
-  margin: auto;
-  position: absolute;
-  top: 50%; left: 50%;
-  -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
-}
-
 .x-button.x-button-confirm {
 	background-color: #3d8b40;
 	border: none;
