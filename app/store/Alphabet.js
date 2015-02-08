@@ -1,6 +1,7 @@
 Ext.define('NerdyKaraoke.store.Alphabet', {
     extend: 'Ext.data.Store',
     config: {
+    	autoload: true,
 	    fields: ['text'],
 
 	    data: [

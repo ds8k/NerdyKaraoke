@@ -79,7 +79,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             //check if a value is set first, as if it isnt we dont have to do anything
             if (value) {
                 //the user could have entered spaces, so we must split them so we can loop through them all
-                var searches = [value]
+                var searches = [value];
                 // var searches = value.split(' ');
                 // searches[searches.length] = value;
 

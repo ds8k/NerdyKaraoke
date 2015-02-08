@@ -10,9 +10,6 @@ Ext.define('NerdyKaraoke.view.TrackSearch', {
 	    		html: '<center><h3>Search by Artist Letter</h3></center>',
 	    		styleHtmlContent: true
 	    	},
-            // {
-            // 	xtype: 'spacer'
-            // },
 	    	{
 	    		xtype: 'dataview',
 	    		scrollable: null,

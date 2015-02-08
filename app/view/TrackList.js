@@ -28,7 +28,7 @@ Ext.define('NerdyKaraoke.view.TrackList', {
                 },
                 bounce: {
                     acceleration: 50,
-                    springTension: .9
+                    springTension: 0.9
                 },
                 minVelocity: 0.5
             }

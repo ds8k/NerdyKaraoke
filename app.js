@@ -84,9 +84,9 @@ if(Ext.os.deviceType === 'Desktop') {
             if (el && el.className && el.className.indexOf('x-container') >= 0) { 
                 var cmp = Ext.getCmp(el.id); 
                 if (cmp && typeof cmp.getScrollable == 'function' && cmp.getScrollable()){ 
-                    var scroller = cmp.getScrollable().getScroller(); 
+                    scroller = cmp.getScrollable().getScroller(); 
                     if (scroller) { 
-                        var offset = {x:0, y: -e.wheelDelta*0.5}; 
+                        offset = {x:0, y: -e.wheelDelta*0.5}; 
                         scroller.fireEvent('scrollstart', scroller, scroller.position.x, scroller.position.y, e); 
                         scroller.scrollBy(offset.x, offset.y); 
                         scroller.snapToBoundary(); 
