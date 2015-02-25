@@ -674,6 +674,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "NerdyKaraoke.store.Alphabet": [],
   "NerdyKaraoke.store.Karaoke": [],
   "NerdyKaraoke.store.NewKaraoke": [],
+  "NerdyKaraoke.store.Requests": [],
   "NerdyKaraoke.view.Issues": [],
   "NerdyKaraoke.view.Main": [],
   "NerdyKaraoke.view.Submit": [],
@@ -1415,6 +1416,7 @@ Ext.ClassManager.addNameAliasMappings({
   "NerdyKaraoke.store.Alphabet": [],
   "NerdyKaraoke.store.Karaoke": [],
   "NerdyKaraoke.store.NewKaraoke": [],
+  "NerdyKaraoke.store.Requests": [],
   "NerdyKaraoke.view.Issues": [
     "widget.Issues"
   ],

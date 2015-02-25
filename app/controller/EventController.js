@@ -42,6 +42,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
     	if(e.event.keyCode != 13) {
             return;
         } else {
+
             if(!field.getValue()) {
                 Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(0);
                 return;
@@ -60,6 +61,8 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
             var store = Ext.getStore('Karaoke');
             var value = field.getValue();
+
+            ga('send', 'event', 'search', 'enter', field.getValue());
 
             if(!store.isLoaded()) {
                 store.load();
@@ -164,6 +167,8 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             message: ''
         });
 
+        ga('send', 'event', 'lyrics', 'tap', record.data.Artist + ' ' + record.data.Title);
+
     	var tabpanel = Ext.ComponentQuery.query('TrackContainer')[0];
     	var detailsTab = tabpanel.getInnerItems()[1];
         var searchLyrics = Ext.ComponentQuery.query('button[action=viewlyrics]')[0];
@@ -180,6 +185,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         //Set the handler for the not found button in the event lyrics aren't available
         searchLyrics.setHandler(function() {
             window.open('https://www.google.com/search?q=' + record.data.Artist + ' ' + record.data.Title + ' lyrics', '_system');
+            ga('send', 'event', 'lyrics not found', 'tap', record.data.Artist + ' ' + record.data.Title);
         });
 
         //Set a 2 second timeout for loading the page
@@ -190,10 +196,14 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
     onSubmitRequest: function(button) {
     	var form = button.up('formpanel');
-        var models = Ext.create('NerdyKaraoke.model.RequestForm', form.getValues());
+        var values = form.getValues();
+        var models = Ext.create('NerdyKaraoke.model.RequestForm', values);
         var errors = models.validate();
         var store = Ext.getStore('Karaoke');
-        var id;
+        var requestStore = Ext.getStore('Requests');
+        var id, request, match;
+
+        requestStore.load();
 
         //Check to see if the form is filled out
         if(errors.isValid()) {
@@ -201,7 +211,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             var index = Math.round(store.getTotalCount()/2);
 
             //See if we have this damn song already
-            id = this.searchForMatchingTrack(store.getData().all, index, form.getValues(), store.getTotalCount());
+            id = this.searchForMatchingTrack(store.getData().all, index, values, store.getTotalCount());
 
             //If we do, yell at the user
         	if (id) {
@@ -247,23 +257,41 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         			}
         		);
             //Form is valid and we don't have the song - send request
-        	} else {
-	            form.submit();
-
-                Ext.Msg.confirm(
-                    'Thanks!',
-                    'Have more requests?',
-                    function(buttonText) {
-                        if(buttonText === 'yes') {
-                            form.setValues({
-                                artist: '',
-                                title: ''
-                            });
-                        } else { 
-                            form.reset();
-                        }
+            } else {
+                requestStore.each(function(item, index, length) {
+                    if (item.get('Artist').toUpperCase() === values.artist.toUpperCase() && item.get('Title').toUpperCase() === values.title.toUpperCase()) {
+                        match = true;
                     }
-                );
+                });
+	            //form.submit();
+                if (match) {
+                    Ext.Msg.alert(
+                        'Whoops!',
+                        'This has already been requested.'
+                    );
+
+                    form.setValues({
+                        artist: '',
+                        title: ''
+                    });
+
+                    match = false;
+                } else {
+                    Ext.Msg.confirm(
+                        'Thanks!',
+                        'Have more requests?',
+                        function(buttonText) {
+                            if(buttonText === 'yes') {
+                                form.setValues({
+                                    artist: '',
+                                    title: ''
+                                });
+                            } else { 
+                                form.reset();
+                            }
+                        }
+                    );
+                }
         	}
         //Form isn't valid - yell at user
         } else {
@@ -275,6 +303,8 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
             Ext.Msg.alert('Uh oh!', message);
         }
+
+        requestStore.load();
     },
 
     //Sends me an email. Self explanatory
@@ -296,6 +326,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         }
         store.clearFilter();
         Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(1);
+        ga('send', 'event', 'filter', 'tap', 'All Songs');
     },
 
     onFilterTap: function(list, index, target, item) {
@@ -324,6 +355,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
         Ext.ComponentQuery.query('searchfield[name=search]')[0].setValue('');
         Ext.ComponentQuery.query('searchfield[name=search]')[0].setPlaceHolder('Search Within ' + item);
+        ga('send', 'event', 'filter', 'tap', 'By Artist');
     },
 
     //Binary search function to check if we already have a requested song
@@ -336,13 +368,13 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         //I use a number of tries method to get as close to the requested artist and song as possible
         while(tries > 0) {
             //If we don't have a match, the index needs to go up or down
-            if(value.artist.toUpperCase() != storeData[index].raw.Artist.toUpperCase() && value.title.toUpperCase() != storeData[index].raw.Title.toUpperCase()) {
+            if(value.artist.toUpperCase() != storeData[index].data.Artist.toUpperCase() && value.title.toUpperCase() != storeData[index].data.Title.toUpperCase()) {
                 //Artist is higher than the index. Move middle index up and down index to the previous middle
-                if(value.artist.toUpperCase() > storeData[index].raw.Artist.toUpperCase()) {
+                if(value.artist.toUpperCase() > storeData[index].data.Artist.toUpperCase()) {
                     downIndex = index;
                     index = Math.round((upIndex - index)/2);
                 //Artist is lower - Move down in the store. You get the idea
-                } else if (value.artist.toUpperCase() < storeData[index].raw.Artist.toUpperCase()) {
+                } else if (value.artist.toUpperCase() < storeData[index].data.Artist.toUpperCase()) {
                     upIndex = index;
                     index = Math.round((index - downIndex)/2);
                 //If we found the artist then don't waste time, get to checking song titles
@@ -360,38 +392,38 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
         //Now we start moving up or down one by one instead of cutting the list in half.
         //Requested artist is higher up in the list - move up incrementally
-        if(value.artist.toUpperCase() > storeData[index].raw.Artist.toUpperCase()) {
+        if(value.artist.toUpperCase() > storeData[index].data.Artist.toUpperCase()) {
             for(i = index; !matched && i < upIndex; i++) {
-                if(value.artist.toUpperCase() === storeData[i].raw.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].raw.Title.toUpperCase()) {
-                    matched = storeData[i].raw;
+                if(value.artist.toUpperCase() === storeData[i].data.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].data.Title.toUpperCase()) {
+                    matched = storeData[i].data;
                 }
             }
         //Requested artist is lower, move down the list
-        } else if (value.artist.toUpperCase() < storeData[index].raw.Artist.toUpperCase()) {
+        } else if (value.artist.toUpperCase() < storeData[index].data.Artist.toUpperCase()) {
             for(i = index; !matched && i > downIndex; i--) {
-                if(value.artist.toUpperCase() === storeData[i].raw.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].raw.Title.toUpperCase()) {
-                    matched = storeData[i].raw;
+                if(value.artist.toUpperCase() === storeData[i].data.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].data.Title.toUpperCase()) {
+                    matched = storeData[i].data;
                 }
             }
         //Artist is a match, we only have to check song titles
         } else {
             //Requested song title is higher up, go up
-            if(value.title.toUpperCase() > storeData[index].raw.Title.toUpperCase()) {
+            if(value.title.toUpperCase() > storeData[index].data.Title.toUpperCase()) {
                 for(i = index; !matched && i < upIndex; i++) {
-                    if(value.artist.toUpperCase() === storeData[i].raw.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].raw.Title.toUpperCase()) {
-                        matched = storeData[i].raw;
+                    if(value.artist.toUpperCase() === storeData[i].data.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].data.Title.toUpperCase()) {
+                        matched = storeData[i].data;
                     }
                 }
             //Request song title is lower, go down
-            } else if(value.title.toUpperCase() < storeData[index].raw.Title.toUpperCase()) {
+            } else if(value.title.toUpperCase() < storeData[index].data.Title.toUpperCase()) {
                 for(i = index; !matched && i > downIndex; i--) {
-                    if(value.artist.toUpperCase() === storeData[i].raw.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].raw.Title.toUpperCase()) {
-                        matched = storeData[i].raw;
+                    if(value.artist.toUpperCase() === storeData[i].data.Artist.toUpperCase() && value.title.toUpperCase() === storeData[i].data.Title.toUpperCase()) {
+                        matched = storeData[i].data;
                     }
                 }
             //We found the artist and the song
             } else {
-                matched = storeData[index].raw;
+                matched = storeData[index].data;
             }
         }
 

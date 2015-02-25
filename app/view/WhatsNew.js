@@ -10,6 +10,11 @@ Ext.define('NerdyKaraoke.view.WhatsNew', {
         variableHeights: true,
         cls: 'lizt',
         itemTpl: '{Artist} - {Title}',
-        store: 'NewKaraoke'
+        store: 'NewKaraoke',
+        listeners: {
+            painted: function() {
+                    ga('send', 'event', 'view', 'tap', 'What\'s New');
+            }
+        }
 	}
 });

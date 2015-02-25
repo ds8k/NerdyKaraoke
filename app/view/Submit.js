@@ -50,6 +50,11 @@ Ext.define('NerdyKaraoke.view.Submit', {
 	                action: 'submitRequest'
 				}
 	        }
-		]
+		],
+		listeners: {
+            painted: function() {
+                    ga('send', 'event', 'view', 'tap', 'Submit A Request');
+            }
+        }
 	}
 });

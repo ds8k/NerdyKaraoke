@@ -44,6 +44,15 @@
             }
         }
     </style>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-59524010-1', 'auto');
+      ga('send', 'event', 'view', 'load', 'Homepage');
+    </script>
     <script type="text/javascript">(function(k){function t(b){function c(a,b){var f=a.length,j,d;for(j=0;j<f;j++){d=a[j];var c=a,e=j,q=void 0;"string"==typeof d&&(d={path:d});d.shared?(d.version=d.shared,q=d.shared+d.path):(G.href=d.path,q=G.href);d.uri=q;d.key=g+"-"+q;h[q]=d;c[e]=d;d.type=b;d.index=j;d.collection=a;d.ready=!1;d.evaluated=!1}return a}var f;"string"==typeof b?(f=b,b=H(f)):f=JSON.stringify(b);var g=b.id,e=g+"-"+I+r,h={};this.key=e;this.css=c(b.css,"css");this.js=c(b.js,"js");l.microloaded=!0;var n=window.Ext.filterPlatform=
 function(a){function b(a){var d=/Mobile(\/|\s)/.test(a);return/(iPhone|iPod)/.test(a)||!/(Silk)/.test(a)&&/(Android)/.test(a)&&(/(Android 2)/.test(a)||d)||/(BlackBerry|BB)/.test(a)&&d||/(Windows Phone)/.test(a)}function f(a){return!b(a)&&(/iPad/.test(a)||/Android|Silk/.test(a)||/(RIM Tablet OS)/.test(a)||/MSIE 10/.test(a)&&/; Touch/.test(a))}var j=!1,d=navigator.userAgent,c,h;a=[].concat(a);c=window.location.search.substr(1).split("\x26");h={};var g;for(g=0;g<c.length;g++){var e=c[g].split("\x3d");
 h[e[0]]=e[1]}if(c=h.platform)return-1!=a.indexOf(c);c=0;for(h=a.length;c<h;c++){switch(a[c]){case "phone":j=b(d);break;case "tablet":j=f(d);break;case "desktop":j=!b(d)&&!f(d);break;case "ios":j=/(iPad|iPhone|iPod)/.test(d);break;case "android":j=/(Android|Silk)/.test(d);break;case "blackberry":j=/(BlackBerry|BB)/.test(d);break;case "safari":j=/Safari/.test(d)&&!/(BlackBerry|BB)/.test(d);break;case "chrome":j=/Chrome/.test(d);break;case "ie10":j=/MSIE 10/.test(d);break;case "windows":j=/MSIE 10/.test(d)||

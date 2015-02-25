@@ -17,7 +17,8 @@ Ext.application({
     stores: [
         'Alphabet',
         'Karaoke',
-        'NewKaraoke'
+        'NewKaraoke',
+        'Requests'
     ],
 
     models: [

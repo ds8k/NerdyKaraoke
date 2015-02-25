@@ -39,6 +39,11 @@ Ext.define('NerdyKaraoke.view.Issues', {
                     }
                 ]
             }
-		]
+		],
+        listeners: {
+            painted: function() {
+                    ga('send', 'event', 'view', 'tap', 'Issues');
+            }
+        }
     }
 });
