@@ -1,0 +1,129 @@
+$base-gradient: null;
+$base-color: #4CAF50;
+$include-default-icons: false;
+
+@import 'sencha-touch/default';
+@import 'sencha-touch/default/all';
+
+@include icon('list');
+@include icon('search');
+
+.x-form-label {
+	background-color:#f7f7f7;
+}
+
+.lizt {
+	font-size:16px;
+}
+
+.x-toolbar-dark.x-docked-top {
+	border-bottom: none;
+	box-shadow: 1px 0px 2px #000000;
+	z-index: 1;
+}
+
+.x-list-normal .x-list-header { 
+	text-shadow: none !important;
+	background-color: #A5D6A7;
+	border-bottom: #A5D6A7;
+	border-top: #A5D6A7;
+}
+
+.x-list .x-list-item.x-item-selected.x-list-item-tpl {
+	background-color: #81C784;
+	border-top: #81C784;
+}
+
+.x-list-normal .x-list-item.x-list-item-tpl {
+	background-color: #F7F7F7
+}
+
+.x-toolbar .x-field-search .x-component-outer { 
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-bottom: 1px solid #A5D6A7;
+	border-radius: 0px;
+}
+
+.x-input-el .x-form-field .x-input-search {
+	margin-left: 1.3em;
+}
+
+.x-android .x-empty .x-input-el {
+	-webkit-text-fill-color: white;
+}
+
+.x-toolbar .x-form-field {
+	color: white;
+	-webkit-text-fill-color: white;
+	text-align: center;
+}
+
+.x-toolbar .x-form-field::-webkit-input-placeholder {
+	text-align: center!important;
+}
+
+.x-toolbar .x-form-field:focus {
+	color: white;
+	-webkit-text-fill-color: white;
+	text-align: left;
+}
+
+.x-field-search .x-field-input:before {
+	color: white;
+	left: 0em;
+}
+
+.lyricsFrame {
+	position: fixed; 
+	right: 0; 
+	bottom: 0; 
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	-webkit-overflow-scrolling: touch;
+	overflow: scroll;
+}
+
+.lyricsFrame iframe {
+	height: 100%;
+	width: 100%;
+}
+
+.customSearch .x-field-input .x-clear-icon {
+	background:url('data:image/png;base64,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') no-repeat;
+	background-position: center center;
+	background-size: 1em;
+}
+
+.item {
+   height:20vw;
+   width: 20%;
+   float:left;
+   position: relative;
+   box-shadow: 0px 0px 1px #000000;
+   padding-top: 6.5%;
+   margin: 1%;
+   background-color: #CBCBCB;
+}
+
+.x-button.x-button-confirm {
+	background-color: #3d8b40;
+	border: none;
+}
+
+
+.x-button.x-button-confirm.x-button-pressing {
+	background-color: #2B6B2E;	
+}
+
+.wrapper {
+	width: 100%;
+	margin-left: 6%;
+}
+
+.x-scroll-bar-grid-wrapper {
+	background-color: #EEEEEE;
+}

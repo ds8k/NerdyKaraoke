@@ -11,14 +11,14 @@ Ext.application({
     name: 'NerdyKaraoke',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Ext.Toast'
     ],
 
     stores: [
         'Alphabet',
         'Karaoke',
-        'NewKaraoke',
-        'Requests'
+        'NewKaraoke'
     ],
 
     models: [

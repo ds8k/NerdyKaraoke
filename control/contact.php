@@ -1,6 +1,6 @@
 <?php
 
-	$to = "requests@nerdykaraoke.com"; // this is your Email address
+    $to = "requests@nerdykaraoke.com"; // this is your Email address
     $from = $_POST['email']; // this is the sender's Email address
     $name = $_POST['name'];
     $artist = $_POST['artist'];
@@ -11,8 +11,5 @@
     $headers = "From:" . $from . "\r\n" .
     			"Reply-To:" . $from;
 
-    $data = array("Artist" => $artist, "Title" => $title);
-    $request = ",\n" . json_encode($data);
-    $file = "requests.json";
-    file_put_contents($file, substr(file_get_contents($file), 0, -3).$request."\n]}");
+    mail($to,$subject,$message,$headers);
 ?>

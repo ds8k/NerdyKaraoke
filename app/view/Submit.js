@@ -3,7 +3,7 @@ Ext.define('NerdyKaraoke.view.Submit', {
 	xtype: 'Submit',
 
 	config: {
-		url: 'contact.php',
+		url: 'control/contact.php',
 		scrollable: true,
         items:[
 	        {

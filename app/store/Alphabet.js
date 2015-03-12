@@ -31,7 +31,8 @@ Ext.define('NerdyKaraoke.store.Alphabet', {
 	        { text : 'X' },
 	        { text : 'Y' },
 	        { text : 'Z' },
-	        { text: '0-9' }
+	        { text: '0-9' },
+	        { text: '?' }
 	    ]
 	}
 });
