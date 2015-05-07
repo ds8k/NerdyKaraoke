@@ -11,8 +11,7 @@ Ext.application({
     name: 'NerdyKaraoke',
 
     requires: [
-        'Ext.MessageBox',
-        'Ext.Toast'
+        'Ext.MessageBox'
     ],
 
     stores: [
