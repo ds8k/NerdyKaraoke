@@ -7,6 +7,7 @@ $include-default-icons: false;
 
 @include icon('list');
 @include icon('search');
+@include icon('music');
 
 .x-form-label {
 	background-color:#f7f7f7;
@@ -18,8 +19,13 @@ $include-default-icons: false;
 
 .x-toolbar-dark.x-docked-top {
 	border-bottom: none;
-	box-shadow: 1px 0px 2px #000000;
+	box-shadow: 0px 0px 2px #000000;
 	z-index: 1;
+}
+
+.x-tabbar-dark {
+	background-color: #3d8b40;
+	border: none;
 }
 
 .x-list-normal .x-list-header { 
@@ -50,13 +56,9 @@ $include-default-icons: false;
 	margin-left: 1.3em;
 }
 
-.x-android .x-empty .x-input-el {
-	-webkit-text-fill-color: white;
-}
-
 .x-toolbar .x-form-field {
 	color: white;
-	-webkit-text-fill-color: white;
+	-webkit-text-fill-color: white!important;
 	text-align: center;
 }
 

@@ -9,12 +9,10 @@ Ext.define('NerdyKaraoke.view.WhatsNew', {
         disableSelection: true,
         variableHeights: true,
         cls: 'lizt',
-        itemTpl: '{Artist} - {Title}',
-        store: 'NewKaraoke',
-        listeners: {
-            painted: function() {
-                    ga('send', 'event', 'view', 'tap', 'What\'s New');
-            }
-        }
+        itemTpl: [
+            '<div style="white-space: nowrap;overflow:hidden;text-overflow:ellipsis;">{Title}</div>',
+            '<div style="color:#6E6E6E;font-size:14px">{Artist}</div>'
+        ],
+        store: 'NewKaraoke'
 	}
 });

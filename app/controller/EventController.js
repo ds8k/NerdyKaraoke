@@ -5,6 +5,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 		refs: {
             SearchTracks: 'searchfield[name=search]',
             TrackItemTap: 'list[xtype=TrackList]',
+            NewItemTap: 'list[xtype=WhatsNew]',
             SubmitRequest: 'button[action=submitRequest]',
             ContactMe: 'button[action=contactMe]',
             ViewTracks: 'button[action=viewTracks]',
@@ -17,6 +18,9 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             },
             TrackItemTap: {
             	itemtap: 'onTrackTap'
+            },
+            NewItemTap: {
+                itemtap: 'onTrackTap'
             },
             SubmitRequest: {
             	tap: 'onSubmitRequest'
@@ -38,16 +42,17 @@ Ext.define('NerdyKaraoke.controller.EventController', {
     	if(e.event.keyCode != 13) {
             return;
         } else {
+            var tabpanel = Ext.ComponentQuery.query('TrackContainer')[0];
             //if the field is empty and the person hits enter then go back to letter selection
             if(!field.getValue()) {
-                Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(0);
+                tabpanel.setActiveItem(0);
                 return;
             }
             //If looking at lyrics, clear HTML and set tracklist tab, else set the view to tracklist
-            if(Ext.ComponentQuery.query('TrackContainer')[0].getActiveItem().title === 'Lyrics') {
-                this.onBackButton(1);
+            if(tabpanel.getActiveItem().title === 'Lyrics') {
+                this.onBackButton(1, tabpanel);
             } else {
-                Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(1);
+                tabpanel.setActiveItem(1);
             }
             
 
@@ -79,29 +84,19 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             //check if a value is set first, as if it isnt we dont have to do anything
             if (value) {
                 //the user could have entered spaces, so we must split them so we can loop through them all
-                var searches = [value];
-                // var searches = value.split(' ');
-                // searches[searches.length] = value;
+                var searches = value,
+                    regexps, i;
 
-                var regexps = [];
-                var i;
-
-                //loop them all
-                for (i = 0; i < searches.length; i++) {
-                    //if it is nothing, continue
-                    if (!searches[i]) continue;
-
-                    //if found, create a new regular expression which is case insenstive
-                    if(searches[i].toUpperCase() != 'THE WHO') {
-                        searches[i] = searches[i].replace(/^The/i, '');
-                        searches[i] = searches[i].trim();
-                    }
-                    if (searches[i].toUpperCase() === 'NSYNC') {
-                        searches[i] = 'N SYNC';
-                    }
-
-                    regexps.push(new RegExp(searches[i], 'i'));
+                //if found, create a new regular expression which is case insenstive
+                if(searches.toUpperCase() != 'THE WHO') {
+                    searches = searches.replace(/^The/i, '');
+                    searches = searches.trim();
                 }
+                if (searches.toUpperCase() === 'NSYNC') {
+                    searches = 'N SYNC';
+                }
+
+                regexps = new RegExp(searches, 'i');
 
                 //now filter the store by passing a method
                 //the passed method will be called for each record in the store
@@ -112,22 +107,20 @@ Ext.define('NerdyKaraoke.controller.EventController', {
                     var justwords;
 
                     //loop through each of the regular expressions
-                    for (i = 0; i < regexps.length; i++) {
-                        var search = regexps[i];
-                        firstlast = record.get('Artist').concat(blank,record.get('Title'));
-                        justwords = record.get('Title').replace( /'/g, "" );
-                        firstlast2 = record.get('Artist').concat(blank,justwords);
-                        didMatch = record.get('Title').match(search) || record.get('Artist').replace(/\s+/g, '').match(search) || firstlast.match(search) || justwords.match(search) || firstlast2.match(search);
+                    var search = regexps;
+                    firstlast = record.get('Artist').concat(blank,record.get('Title'));
+                    justwords = record.get('Title').replace( /'/g, "" );
+                    firstlast2 = record.get('Artist').concat(blank,justwords);
+                    didMatch = record.get('Title').match(search) || record.get('Artist').replace(/\s+/g, '').match(search) || firstlast.match(search) || justwords.match(search) || firstlast2.match(search);
 
-                        //if it matched the first or last name, push it into the matches array
-                        matched.push(didMatch);
-                    }
+                    //if it matched the first or last name, push it into the matches array
+                    matched = didMatch;
+
                     //if nothing was found, return false (dont so in the store)
-                    if (regexps.length > 1 && matched.indexOf(false) != -1) {
+                    if (!didMatch) {
                         return false;
                     } else {
-                        //else true true (show in the store)
-                        return matched[0];
+                        return matched;
                     }
                 });
 
@@ -202,18 +195,31 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
         //analytics
         ga('send', 'event', 'lyrics', 'tap', record.data.Artist + ' ' + record.data.Title);
+    	var tabpanel = record.data.addNew ? Ext.ComponentQuery.query('WhatsNewContainer')[0] : Ext.ComponentQuery.query('TrackContainer')[0],
+            scope = this,
+            lyrics, searchLyrics, backButton, page;
 
-    	var tabpanel = Ext.ComponentQuery.query('TrackContainer')[0];
-    	var detailsTab = tabpanel.getInnerItems()[1];
-        var searchLyrics = Ext.ComponentQuery.query('button[action=viewlyrics]')[0];
-        var backButton = Ext.ComponentQuery.query('button[action=goBack]')[0];
-        var scope = this;
+        if(tabpanel.config.xtype === 'TrackContainer') {
+            lyrics = Ext.ComponentQuery.query('panel[name=lyricsbox]')[0];
+            searchLyrics = Ext.ComponentQuery.query('button[name=trackSearch]')[0];
+            backButton = Ext.ComponentQuery.query('button[name=trackBack]')[0];
+            page = 1;
+        } else {
+            lyrics = Ext.ComponentQuery.query('panel[name=newlyricsbox]')[0];
+            searchLyrics = Ext.ComponentQuery.query('button[name=newSearch]')[0];
+            backButton = Ext.ComponentQuery.query('button[name=newBack]')[0];
+            page = 0;
+        }
 
         //Set the HTML for lyrics
-        Ext.ComponentQuery.query('panel[name=lyricsbox]')[0].setHtml(
-            '<div class="lyricsFrame"><iframe seamless sandbox="allow-same-origin allow-scripts" src="http://lyrics.wikia.com/' + 
+        lyrics.setHtml(
+            '<div class="lyricsFrame"><iframe id="lyrics" seamless sandbox="allow-same-origin allow-scripts" src="http://lyrics.wikia.com/' + 
             record.data.Artist + ':' + record.data.Title + '"></iframe></div>'
         );
+
+        document.getElementById("lyrics").onload = function() {
+            Ext.Viewport.unmask();
+        };
 
         //Set lyrics tab as active view
     	tabpanel.setActiveItem(2);
@@ -225,10 +231,10 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         });
 
         if (!backButton.hasListener('tap')) {
-            Ext.ComponentQuery.query('button[action=goBack]')[0].on(
+            backButton.on(
                 'tap',
                 function() {
-                    scope.onBackButton(1);
+                    scope.onBackButton(page, tabpanel);
                 }, 
                 scope,
                 { single: true }
@@ -238,7 +244,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         //Set a 2 second timeout for loading the page
         setTimeout(function() {
             Ext.Viewport.unmask();
-        }, 2000);
+        }, 10000);
     },
 
     onSubmitRequest: function(button) {
@@ -337,9 +343,14 @@ Ext.define('NerdyKaraoke.controller.EventController', {
     },
 
     //Called when user taps back button. Clears HTML and sets tracklist as main view
-    onBackButton: function(page) {
-        Ext.ComponentQuery.query('panel[name=lyricsbox]')[0].setHtml('');
-        Ext.ComponentQuery.query('TrackContainer')[0].setActiveItem(page);
+    onBackButton: function(page, tabpanel) {
+        console.log(tabpanel);
+        if(tabpanel.config.xtype === 'TrackContainer') {
+            Ext.ComponentQuery.query('panel[name=lyricsbox]')[0].setHtml('');
+        } else {
+            Ext.ComponentQuery.query('panel[name=newlyricsbox]')[0].setHtml('');
+        }
+        tabpanel.setActiveItem(page);
     },
 
     onViewTracks: function(button) {
@@ -372,10 +383,17 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             store.clearFilter();
 
             store.filter(function(record) {
+                if(record.get('Artist') === 'alt J') {
+                    console.log('alt');
+                    if(item.toUpperCase() === record.get('Artist').charAt(0).toUpperCase()) {
+                        console.log('what the hell');
+                    }
+                }
                 if(item === '0-9') {
                     return !isNaN(record.get('Artist').charAt(0));
                 } else {
-                    return item === record.get('Artist').charAt(0);
+
+                    return item.toUpperCase() === record.get('Artist').charAt(0).toUpperCase();
                 }
             });
 
@@ -498,10 +516,10 @@ Ext.define('NerdyKaraoke.controller.EventController', {
                         scope.showRandomTrack(~~(Math.random() * store.getTotalCount()), store);
                     }
                     if (buttonText === 'lyrics') {
-                        Ext.ComponentQuery.query('button[action=goBack]')[0].on(
+                        Ext.ComponentQuery.query('button[name=trackBack]')[0].on(
                             'tap',
                             function() {
-                                scope.onBackButton(0);
+                                scope.onBackButton(0, Ext.ComponentQuery.query('TrackContainer')[0]);
                             }, 
                             scope,
                             { single: true }
@@ -536,76 +554,82 @@ Ext.define('NerdyKaraoke.controller.EventController', {
     },
 
     onSignUpTap: function(record) {
-
+        var scope = this;
         var apikey = '8bHe7yhb.kAGIWAxaS0FriAc61zW6uJQ';
 
         Ext.Msg.prompt(
             record.data.Artist,
             record.data.Title,
             function(buttonText, value) {
-                if (buttonText === 'ok' && value) {
-                    Ext.Viewport.mask({
-                        xtype: 'loadmask',
-                        message: ''
-                    });
+                if (buttonText === 'ok') {
+                    if(value.indexOf('-') !== -1 || value.indexOf('>') !== -1 || value.indexOf('<') !== -1) {
+                        localStorage.removeItem('karaokeName');
+                        Ext.defer(function() {
+                            Ext.Msg.alert(
+                                'Whoops!',
+                                'No special characters.<br>Please try again!',
+                                function() { scope.onSignUpTap(record); }
+                            );
+                        }, 50);
+                    } else if (value) {
+                        Ext.Viewport.mask({
+                            xtype: 'loadmask',
+                            message: ''
+                        });
 
-                    if (localStorage.karaokeName !== value) {
-                        localStorage.karaokeName = value;
-                    }
-
-                    var name = value + ' - ' + record.data.Artist + ': ' + record.data.Title;
-                    var date = new Date().toISOString();
-
-                    Ext.Ajax.request({
-                        method: 'POST',
-                        url: 'https://app.asana.com/api/1.0/tasks',
-                        headers: {
-                            'Authorization': 'Basic ' + btoa(apikey + ':')
-                        },
-                        params: {
-                            name: name,
-                            due_at: date,
-                            assignee: 'me',
-                            workspace: '28837322189586'
-                        },
-                        success: function(response) {
-                            Ext.defer(function() {
-                                Ext.Msg.alert(
-                                    'Success',
-                                    'You signed up to sing!'
-                                );
-                            }, 50);
-                        },
-                        failure: function() {
-                            Ext.defer(function() {
-                                Ext.Msg.alert(
-                                    'Uh oh',
-                                    'Something bad happened. Try again or sign up manually.'
-                                );
-                            }, 50);
-                        },
-                        callback: function() {
-                            Ext.Viewport.unmask();
+                        if (localStorage.karaokeName !== value) {
+                            localStorage.karaokeName = value;
                         }
-                    });
-                } else if (!value && buttonText !== 'cancel') {
-                    Ext.defer(function() {
-                        Ext.Msg.alert(
-                            'Whoops!',
-                            'You can\'t sign up without a name'
-                        );
-                    }, 50);
+
+                        var name = value + ' - ' + record.data.Artist + ' - ' + record.data.Title;
+                        var date = new Date().toISOString();
+
+                        Ext.Ajax.request({
+                            method: 'POST',
+                            url: 'https://app.asana.com/api/1.0/tasks',
+                            headers: {
+                                'Authorization': 'Basic ' + btoa(apikey + ':')
+                            },
+                            params: {
+                                name: name,
+                                due_at: date,
+                                assignee: 'me',
+                                workspace: '28837322189586'
+                            },
+                            success: function(response) {
+                                Ext.defer(function() {
+                                    Ext.Msg.alert(
+                                        'Success',
+                                        'You signed up to sing!'
+                                    );
+                                }, 50);
+                            },
+                            failure: function() {
+                                Ext.defer(function() {
+                                    Ext.Msg.alert(
+                                        'Uh oh',
+                                        'Something bad happened. Try again or sign up manually.'
+                                    );
+                                }, 50);
+                            },
+                            callback: function() {
+                                Ext.Viewport.unmask();
+                            }
+                        });
+                    } else if (!value) {
+                        Ext.defer(function() {
+                            Ext.Msg.alert(
+                                'Whoops!',
+                                'You can\'t sign up without a name',
+                                function() { scope.onSignUpTap(record); }
+                            );
+                        }, 50);
+                    }
                 }
             },
             this,
             false,
-            (function() {
-                if (localStorage.karaokeName) {
-                    return localStorage.karaokeName;
-                } else {
-                    return null;
-                }
-            })(),
+            localStorage.karaokeName ? localStorage.karaokeName : null,
             { placeHolder: 'What\'s your name?' }
         );
     }

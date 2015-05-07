@@ -642,6 +642,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.ux.ApplicationMenu": [],
   "Ext.ux.ContextMenu": [],
   "Ext.ux.MenuButton": [],
+  "Ext.ux.PullRefreshFn": [],
   "Ext.ux.TabMenuButton": [],
   "Ext.ux.device.Analytics": [],
   "Ext.ux.device.Twitter": [],
@@ -681,7 +682,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "NerdyKaraoke.view.TrackList": [],
   "NerdyKaraoke.view.TrackLyrics": [],
   "NerdyKaraoke.view.TrackSearch": [],
-  "NerdyKaraoke.view.WhatsNew": []
+  "NerdyKaraoke.view.WhatsNew": [],
+  "NerdyKaraoke.view.WhatsNewContainer": [],
+  "NerdyKaraoke.view.WhatsNewLyrics": []
 });
 
 Ext.ClassManager.addNameAliasMappings({
@@ -1373,6 +1376,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.ux.ApplicationMenu": [],
   "Ext.ux.ContextMenu": [],
   "Ext.ux.MenuButton": [],
+  "Ext.ux.PullRefreshFn": [
+    "plugin.pullrefreshfn"
+  ],
   "Ext.ux.TabMenuButton": [],
   "Ext.ux.device.Analytics": [],
   "Ext.ux.device.Twitter": [],
@@ -1438,6 +1444,12 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "NerdyKaraoke.view.WhatsNew": [
     "widget.WhatsNew"
+  ],
+  "NerdyKaraoke.view.WhatsNewContainer": [
+    "widget.WhatsNewContainer"
+  ],
+  "NerdyKaraoke.view.WhatsNewLyrics": [
+    "widget.WhatsNewLyrics"
   ]
 });
 

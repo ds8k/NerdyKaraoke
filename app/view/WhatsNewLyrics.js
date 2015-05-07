@@ -1,13 +1,13 @@
-Ext.define('NerdyKaraoke.view.TrackLyrics', {
+Ext.define('NerdyKaraoke.view.WhatsNewLyrics', {
     extend: 'Ext.Container',
-    xtype: 'TrackLyrics',
+    xtype: 'WhatsNewLyrics',
     config: {
     	scrollable: false,
         height: '100%',
     	items: [
     		{
     			xtype: 'panel',
-                name: 'lyricsbox',
+                name: 'newlyricsbox',
                 html: ''
     		},
     		{
@@ -17,7 +17,7 @@ Ext.define('NerdyKaraoke.view.TrackLyrics', {
     			items: [
     				{
     					xtype: 'button',
-                        name: 'trackBack',
+                        name: 'newBack',
     					text: 'Back',
     					right: '50%',
                         left: 0,
@@ -27,7 +27,7 @@ Ext.define('NerdyKaraoke.view.TrackLyrics', {
     				},
     				{
     					xtype: 'button',
-                        name: 'trackSearch',
+                        name: 'newSearch',
                         text: 'Not found?',
     					action: 'viewlyrics',
     					left: '50%',

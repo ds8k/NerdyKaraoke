@@ -32,7 +32,9 @@ Ext.application({
 
     views: [
         'Main',
-        'WhatsNew',
+        'WhatsNewContainer',
+            'WhatsNew',
+            'WhatsNewLyrics',
         'TrackContainer',
             'TrackSearch',
             'TrackList',
@@ -59,6 +61,46 @@ Ext.application({
         Ext.Viewport.add(Ext.create('NerdyKaraoke.view.Main'));
         Ext.Viewport.show({ type: 'fade' });
         Ext.Viewport.setMasked({ xtype:'loadmask', message:'Loading...'} );
+
+        Ext.override(Ext.MessageBox, {
+            hide: function() {
+                if (this.activeAnimation && this.activeAnimation._onEnd) {
+                    this.activeAnimation._onEnd();
+                }
+                return this.callParent(arguments);
+            }
+        });
+
+        Ext.override(Ext.util.SizeMonitor, {
+           constructor: function(config) {
+               var namespace = Ext.util.sizemonitor;
+
+               if (Ext.browser.is.Firefox) {
+                   return new namespace.OverflowChange(config);
+               } else if (Ext.browser.is.WebKit) {
+                   if (!Ext.browser.is.Silk && Ext.browser.engineVersion.gtEq('535') && !Ext.browser.engineVersion.ltEq('537.36')) {
+                       return new namespace.OverflowChange(config);
+                   } else {
+                       return new namespace.Scroll(config);
+                   }
+               } else if (Ext.browser.is.IE11) {
+                   return new namespace.Scroll(config);
+               } else {
+                   return new namespace.Scroll(config);
+               }
+           }
+       });
+
+       Ext.override(Ext.util.PaintMonitor, {
+           constructor: function(config) {
+               if (Ext.browser.is.Firefox || (Ext.browser.is.WebKit && Ext.browser.engineVersion.gtEq('536') && !Ext.browser.engineVersion.ltEq('537.36') && !Ext.os.is.Blackberry)) {
+                   return new Ext.util.paintmonitor.OverflowChange(config);
+               }
+               else {
+                   return new Ext.util.paintmonitor.CssAnimation(config);
+               }
+           }
+       });
     },
 
     onUpdated: function() {

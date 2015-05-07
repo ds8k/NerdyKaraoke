@@ -4,26 +4,28 @@ Ext.define('NerdyKaraoke.view.TrackContainer', {
 	requires: ['Ext.ux.touch.SwipeTabs'],
 
 	config: {
-		plugins: 'swipetabs',
 		tabBarPosition: 'bottom',
-		tabBar: {
-			hidden: true
-		},
+		// tabBar: {
+		// 	hidden: true
+		// },
 		items: [
 			{
 				xtype: 'TrackSearch',
+				iconCls: 'search',
 				title: 'Search',
 				tabIndex: 0
 			},
 			{
 				xtype: 'TrackList',
+				iconCls: 'music',
 				title: 'Tracks',
 				tabIndex: 1
 			},
 			{
 				xtype: 'TrackLyrics',
 				title: 'Lyrics',
-				tabIndex: 2
+				tabIndex: 2,
+				hidden: true
 			}
 		]
 	}

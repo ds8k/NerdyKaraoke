@@ -45,16 +45,11 @@ Ext.define('NerdyKaraoke.view.Submit', {
                     xtype: 'button'
                 },
                 items: {
-	                text: 'Send',
+	                text: 'Send Request',
 	                ui: 'confirm',
 	                action: 'submitRequest'
 				}
 	        }
-		],
-		listeners: {
-            painted: function() {
-                    ga('send', 'event', 'view', 'tap', 'Submit A Request');
-            }
-        }
+		]
 	}
 });

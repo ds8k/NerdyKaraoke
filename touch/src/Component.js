@@ -1601,7 +1601,7 @@ Ext.define('Ext.Component', {
             }
         }
         else {
-            flex = null
+            flex = null;
         }
 
         return flex;
@@ -1859,7 +1859,7 @@ Ext.define('Ext.Component', {
     },
 
     doSetDisabled: function(disabled) {
-        this.element[disabled ? 'addCls' : 'removeCls'](this.getDisabledCls());
+        try { this.element[disabled ? 'addCls' : 'removeCls'](this.getDisabledCls()); } catch (e) { /*console.log(e);*/ }
     },
 
     updateDisabledCls: function(newDisabledCls, oldDisabledCls) {

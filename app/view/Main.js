@@ -16,9 +16,10 @@ Ext.define('NerdyKaraoke.view.Main', {
     ],
     
     config: {
+        ui: 'normal',
         fullscreen: true,
         slideSelector: false,
-        containerSlideDelay: -1,
+        containerSlideDelay: 20,
         selectSlideDuration: 200,
         itemMask: true,
         slideButtonDefaults: {
@@ -68,21 +69,23 @@ Ext.define('NerdyKaraoke.view.Main', {
                             {
                                 xtype: 'component',
                                 styleHtmlContent: true,
-                                html: '<center>Hit the menu button to navigate.</center>'
+                                html: '<center>Hit the menu button to navigate</center>'
                             },
                             {
                                 xtype: 'component',
                                 styleHtmlContent: true,
-                                html: '<center>Swipe to get back to search options.</center>'
-                            },
-                            {
-                                xtype: 'component',
-                                styleHtmlContent: true,
-                                html: '<center>Tap a song to view the lyrics.</center>'
+                                html: '<center>Tap a song to view the lyrics and sign up</center>'
                             }
                         ]
                     }
-                ]
+                ],
+                listeners : {
+                    painted: {
+                        fn: function() {
+                            ga('send', 'pageview', 'Homepage');
+                        }
+                    }
+                }
             },
             {
 
@@ -106,12 +109,18 @@ Ext.define('NerdyKaraoke.view.Main', {
                     {
                         xtype: 'TrackContainer'
                     }
-                ]
+                ],
+                listeners : {
+                    painted: {
+                        fn: function() {
+                            ga('send', 'pageview', 'Tracks');
+                        }
+                    }
+                }
             },
             {
                 title: 'What\'s New',
                 slideButton: true,
-
                 items: [
                     {
                         xtype: 'toolbar',
@@ -120,9 +129,16 @@ Ext.define('NerdyKaraoke.view.Main', {
                         title: 'What\'s New'
                     },
                     {
-                        xtype: 'WhatsNew'
+                        xtype: 'WhatsNewContainer'
                     }
-                ]
+                ],
+                listeners : {
+                    painted: {
+                        fn: function() {
+                            ga('send', 'pageview', 'What\'s New');
+                        }
+                    }
+                }
             },
             {
                 title: 'Send A Request',
@@ -137,7 +153,14 @@ Ext.define('NerdyKaraoke.view.Main', {
                     {
                         xtype: 'Submit'
                     }
-                ]
+                ],
+                listeners : {
+                    painted: {
+                        fn: function() {
+                            ga('send', 'pageview', 'Request');
+                        }
+                    }
+                }
             },
             {
                 title: 'Issues',
@@ -152,7 +175,14 @@ Ext.define('NerdyKaraoke.view.Main', {
                     {
                         xtype: 'Issues'
                     }
-                ]
+                ],
+                listeners : {
+                    painted: {
+                        fn: function() {
+                            ga('send', 'pageview', 'Issues');
+                        }
+                    }
+                }
             }
         ]
     }

@@ -7,8 +7,6 @@ Ext.define('NerdyKaraoke.store.Karaoke', {
 		sorters: 'Title',
 		grouper: 'Artist',
         proxy: {
-            noCache: true,
-            enablePagingParams: false,
             type: 'ajax',
             url: 'karaoke.json',
 
