@@ -549,7 +549,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
     onSignUpTap: function(record) {
         var scope = this;
         var apikey = '';
-
+        
         Ext.Msg.prompt(
             record.data.Artist,
             record.data.Title,
@@ -587,7 +587,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
                                 name: name,
                                 due_at: date,
                                 assignee: 'me',
-                                workspace: '28837322189586'
+                                workspace: ''
                             },
                             success: function(response) {
                                 ga('send', 'event', 'sign up', 'enter', value);
