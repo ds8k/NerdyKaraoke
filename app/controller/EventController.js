@@ -344,7 +344,6 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
     //Called when user taps back button. Clears HTML and sets tracklist as main view
     onBackButton: function(page, tabpanel) {
-        console.log(tabpanel);
         if(tabpanel.config.xtype === 'TrackContainer') {
             Ext.ComponentQuery.query('panel[name=lyricsbox]')[0].setHtml('');
         } else {
@@ -383,12 +382,6 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             store.clearFilter();
 
             store.filter(function(record) {
-                if(record.get('Artist') === 'alt J') {
-                    console.log('alt');
-                    if(item.toUpperCase() === record.get('Artist').charAt(0).toUpperCase()) {
-                        console.log('what the hell');
-                    }
-                }
                 if(item === '0-9') {
                     return !isNaN(record.get('Artist').charAt(0));
                 } else {
@@ -555,7 +548,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
     onSignUpTap: function(record) {
         var scope = this;
-        var apikey = '8bHe7yhb.kAGIWAxaS0FriAc61zW6uJQ';
+        var apikey = '';
 
         Ext.Msg.prompt(
             record.data.Artist,
@@ -597,6 +590,8 @@ Ext.define('NerdyKaraoke.controller.EventController', {
                                 workspace: '28837322189586'
                             },
                             success: function(response) {
+                                ga('send', 'event', 'sign up', 'enter', value);
+
                                 Ext.defer(function() {
                                     Ext.Msg.alert(
                                         'Success',

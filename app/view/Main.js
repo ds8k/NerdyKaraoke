@@ -141,14 +141,14 @@ Ext.define('NerdyKaraoke.view.Main', {
                 }
             },
             {
-                title: 'Send A Request',
+                title: 'Request A Song',
                 slideButton: true,
                 items: [
                     {
                         xtype: 'toolbar',
                         docked: 'top',
                         minHeight: '50px',
-                        title: 'Send A Request'
+                        title: 'Request A Song'
                     },
                     {
                         xtype: 'Submit'
