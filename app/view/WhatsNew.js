@@ -11,7 +11,7 @@ Ext.define('NerdyKaraoke.view.WhatsNew', {
         cls: 'lizt',
         itemTpl: [
             '<div style="white-space: nowrap;overflow:hidden;text-overflow:ellipsis;">{Title}</div>',
-            '<div style="color:#6E6E6E;font-size:14px">{Artist}</div>'
+            '<div class="secondaryText" style="font-size:14px">{Artist}</div>'
         ],
         store: 'NewKaraoke'
 	}

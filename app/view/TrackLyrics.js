@@ -14,26 +14,27 @@ Ext.define('NerdyKaraoke.view.TrackLyrics', {
     			xtype: 'container',
     			layout: 'hbox',
     			docked: 'bottom',
+                defaults: {
+                    xtype: 'button',
+                    bottom: 0,
+                    cls: 'lyricsButton'
+                },
     			items: [
     				{
-    					xtype: 'button',
                         name: 'trackBack',
     					text: 'Back',
     					right: '50%',
                         left: 0,
-                        bottom: 0,
                         margin: '0.6em 0.3em 0.6em 0.75em',
                         action: 'goBack'
     				},
     				{
-    					xtype: 'button',
                         name: 'trackSearch',
-                        text: 'Not found?',
-    					action: 'viewlyrics',
+                        text: 'Not Found?',
     					left: '50%',
                         right: 0,
-                        bottom: 0,
-                        margin: '0.6em 0.75em 0.6em 0.3em'
+                        margin: '0.6em 0.75em 0.6em 0.3em',
+                        action: 'viewlyrics'
     				}
     			]
     		}

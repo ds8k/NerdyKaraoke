@@ -4,7 +4,6 @@ Ext.define('NerdyKaraoke.view.TrackList', {
 
 	config: {
 		grouped: true,
-        indexBar: true,
         sorted: true,
         infinite: true,
         itemHeight: 45,
@@ -13,7 +12,7 @@ Ext.define('NerdyKaraoke.view.TrackList', {
         pinHeaders: true,
         cls: 'lizt',
         itemTpl: '{Title}',
-        emptyText: 'Send requests to requests@nerdykaraoke.com',
+        emptyText: 'Send requests to</br>requests@nerdykaraoke.com',
         store: 'Karaoke',
         maskOnOpen: true,
         scrollable: {

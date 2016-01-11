@@ -16,14 +16,12 @@ Ext.define('NerdyKaraoke.store.NewKaraoke', {
                 rootProperty: 'karaoke'
             }
         },
-
         grouper: {
             sortProperty: 'index',
             groupFn: function(record) {
                 return record.get('addNew');
             }
         },
-        
 	    listeners: {
 	        load: {
 	            fn: function(){

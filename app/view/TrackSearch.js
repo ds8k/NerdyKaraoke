@@ -32,12 +32,10 @@ Ext.define('NerdyKaraoke.view.TrackSearch', {
                     pack: 'middle',
                     align: 'stretch'
                 },
-                defaults: {
-                    margin: '0 0.75em 0.75em',
-                    xtype: 'button'
-                },
                 items: [
                     {
+                        xtype: 'button',
+                        margin: '0 0.75em 0.75em',
                     	text: 'View Full List',
                     	ui: 'confirm',
                     	action: 'viewTracks'

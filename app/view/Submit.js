@@ -8,17 +8,19 @@ Ext.define('NerdyKaraoke.view.Submit', {
         items:[
 	        {
 	            xtype: 'fieldset',
-	            instructions: 'Can\'t find your favorite song? </br> Let us know what you\'d like to sing! </br></br> Note: Please be realistic with your requests. Johnny YouTube probably won\'t have a karaoke version of his rap about Skyrim.',
+	            instructions: 'Can\'t find your favorite song?</br>We add new karaoke tracks every week!</br></br>Note: Please be realistic with your requests. Johnny YouTube probably won\'t have a karaoke version of his rap about Skyrim.',
 	            items: [
 		            {
 		                xtype: 'textfield',
 		                name: 'name',
-		                label: 'Name'
+		                label: 'Name',
+		                value: localStorage.karaokeSubmitName
 		            },
 		            {
 		                xtype: 'emailfield',
 		                name :'email',
-		                label: 'Email'
+		                label: 'Email',
+		                value: localStorage.karaokeSubmitEmail
 		            },
 		            {
 		                xtype: 'textfield',

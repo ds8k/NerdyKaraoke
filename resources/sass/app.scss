@@ -1,5 +1,9 @@
 $base-gradient: null;
 $base-color: #4CAF50;
+$accent-color: #536DFE;
+$primary-text: #212121;
+$secondary-text: #727272;
+$light-primary-color: #C8E6C9;
 $include-default-icons: false;
 
 @import 'sencha-touch/default';
@@ -8,6 +12,42 @@ $include-default-icons: false;
 @include icon('list');
 @include icon('search');
 @include icon('music');
+@include icon-font('icomoon', inline-font-files('icomoon/icomoon.woff', woff));
+@include icon("menu", "\e61e", "icomoon");
+
+@keyframes x-loading-spinner-rotate {
+    0% {     transform: rotate(0deg); }
+    8.32% {  transform: rotate(0deg); }
+    8.33% {  transform: rotate(30deg); }
+    16.65% { transform: rotate(30deg); }
+    16.66% { transform: rotate(60deg); }
+    24.99% { transform: rotate(60deg); }
+    25% { transform: rotate(90deg); }
+    33.32% { transform: rotate(90deg); }
+    33.33% { transform: rotate(120deg); }
+    41.65% { transform: rotate(120deg); }
+    41.66% { transform: rotate(150deg); }
+    49.99% { transform: rotate(150deg); }
+    50% { transform: rotate(180deg); }
+    58.32% { transform: rotate(180deg); }
+    58.33% { transform: rotate(210deg); }
+    66.65% { transform: rotate(210deg); }
+    66.66% { transform: rotate(240deg); }
+    74.99% { transform: rotate(240deg); }
+    75% { transform: rotate(270deg); }
+    83.32% { transform: rotate(270deg); }
+    83.33% { transform: rotate(300deg); }
+    91.65% { transform: rotate(300deg); }
+    91.66% { transform: rotate(330deg); }
+    100% { transform: rotate(330deg); }
+}
+
+html, body, h3, h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: $primary-text;
+    height: 100%;
+}
 
 .x-form-label {
 	background-color:#f7f7f7;
@@ -23,6 +63,10 @@ $include-default-icons: false;
 	z-index: 1;
 }
 
+.x-toolbar-dark .x-title {
+	text-shadow: none;
+}
+
 .x-tabbar-dark {
 	background-color: #3d8b40;
 	border: none;
@@ -30,9 +74,10 @@ $include-default-icons: false;
 
 .x-list-normal .x-list-header { 
 	text-shadow: none !important;
-	background-color: #A5D6A7;
-	border-bottom: #A5D6A7;
-	border-top: #A5D6A7;
+	//#A5D6A7
+	background-color: $light-primary-color;
+	border-bottom: $light-primary-color;
+	border-top: $light-primary-color;
 }
 
 .x-list .x-list-item.x-item-selected.x-list-item-tpl {
@@ -48,7 +93,7 @@ $include-default-icons: false;
 	background-color: transparent;
 	-webkit-box-shadow: none;
 	box-shadow: none;
-	border-bottom: 1px solid #A5D6A7;
+	border-bottom: 1px solid $light-primary-color;
 	border-radius: 0px;
 }
 
@@ -101,24 +146,41 @@ $include-default-icons: false;
 }
 
 .item {
-   height:20vw;
-   width: 20%;
-   float:left;
-   position: relative;
-   box-shadow: 0px 0px 1px #000000;
-   padding-top: 6.5%;
-   margin: 1%;
-   background-color: #CBCBCB;
+	height:20vw;
+	width: 20%;
+	float:left;
+	position: relative;
+	vertical-align: middle;
+	margin: 1%;
+	background-color: #B6B6B6;
+	border-radius: 2px;
+	border: none;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	center {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 6.5vw;
+	}
+}
+
+.x-button-label {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
 }
 
 .x-button.x-button-confirm {
-	background-color: #3d8b40;
+	background-color: $accent-color;
+	border-radius: 2px;
 	border: none;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	text-size: 0.9em;
 }
 
 
 .x-button.x-button-confirm.x-button-pressing {
-	background-color: #2B6B2E;	
+	background-color: #2E4DF6;
+	background-image: none;
 }
 
 .wrapper {
@@ -128,4 +190,89 @@ $include-default-icons: false;
 
 .x-scroll-bar-grid-wrapper {
 	background-color: #EEEEEE;
+}
+
+.lyricsButton {
+	border-radius: 2px;
+	border: none;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	span {
+		font-size: 0.8em;
+		padding: 0.25em 0em;
+	}
+}
+
+li {
+	padding-bottom: 0.5em;
+}
+
+.x-msgbox {
+	border: none;
+	border-radius: 2px;
+	background-color: white;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+	.x-button.x-button-action, .x-button.x-button-normal {
+		background-color: white;
+		border: none;
+		color: $accent-color;
+		font-size: 1.2em;
+		padding: 0;
+		&.x-button-pressing {
+			background-image: none;
+			background-color: white;
+			color: darken($accent-color, 20%);
+		}
+	}
+	.x-toolbar-dark {
+		box-shadow: none;
+		.x-title {
+			color: $primary-text;
+		}
+	}
+	.x-msgbox-text {
+		color: $secondary-text;
+		text-shadow: none;
+		padding: 0.5em;
+	}
+	.x-field {
+		padding: 0em 1em 0.5em;
+		.x-component-outer {
+			border-bottom: 1px solid #BBBBBB;
+		}
+	}
+	.x-toolbar .x-button {
+		margin: 0;
+	}
+}
+
+.x-form-fieldset-instructions {
+	text-shadow: none;
+	color: $secondary-text;
+}
+
+.secondaryText {
+	color: $secondary-text;
+}
+
+.x-tabbar-dark.x-docked-bottom {
+	height: initial;
+	border-radius: 0px;
+	.x-tab {
+		text-shadow: none;
+		.x-button-icon:before{
+			color: darken($light-primary-color, 30%);
+		}
+	}
+	.x-tab-active {
+		background-color: transparent;
+		background-image: none;
+		box-shadow: none;
+		border-radius: 0;
+		border-top: 3px solid $light-primary-color;;
+		.x-button-icon:before {
+			color: $light-primary-color;
+		}
+	}
 }

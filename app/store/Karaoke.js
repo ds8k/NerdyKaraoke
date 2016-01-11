@@ -5,7 +5,6 @@ Ext.define('NerdyKaraoke.store.Karaoke', {
 		autoLoad: true,
 		model: 'NerdyKaraoke.model.Songs',
 		sorters: 'Title',
-		grouper: 'Artist',
         proxy: {
             type: 'ajax',
             url: 'karaoke.json',
@@ -16,7 +15,12 @@ Ext.define('NerdyKaraoke.store.Karaoke', {
                 totalProperty: 'totalCount'
             }
         },
-
+        grouper: {
+            groupFn: function(record) {
+                return record.data.Artist;
+            },
+            sortProperty: 'Sort'
+        },
 	    listeners: {
 	        load: {
 	            fn: function(){

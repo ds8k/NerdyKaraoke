@@ -5,9 +5,6 @@ Ext.define('NerdyKaraoke.view.TrackContainer', {
 
 	config: {
 		tabBarPosition: 'bottom',
-		// tabBar: {
-		// 	hidden: true
-		// },
 		items: [
 			{
 				xtype: 'TrackSearch',

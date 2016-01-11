@@ -64,17 +64,24 @@ Ext.define('NerdyKaraoke.view.Main', {
                             {
                                 xtype: 'component',
                                 styleHtmlContent: true,
-                                html:   '<center><h2>Welcome to<br>Nerdy Karaoke!</h2><p>Hosted by Dick Steel</center>'
+                                html: [
+                                    '<div style="text-align:center;">',
+                                        'Welcome to<br><h2>Nerdy Karaoke!</h2>',
+                                        '<div class="secondaryText">',
+                                            '<p>Hosted by Dick Steel</p>',
+                                            'Hit the menu button to navigate<br>',
+                                            'Tap a song to view the lyrics and sign up',
+                                        '</div>',
+                                    '</div>'
+                                ].join('')
                             },
                             {
-                                xtype: 'component',
-                                styleHtmlContent: true,
-                                html: '<center>Hit the menu button to navigate</center>'
-                            },
-                            {
-                                xtype: 'component',
-                                styleHtmlContent: true,
-                                html: '<center>Tap a song to view the lyrics and sign up</center>'
+                                xtype: 'button',
+                                margin: '0 0.75em 0.75em',
+                                ui: 'confirm',
+                                text: 'Changelog',
+                                scrollDock: 'bottom',
+                                docked: 'bottom'
                             }
                         ]
                     }
@@ -141,14 +148,14 @@ Ext.define('NerdyKaraoke.view.Main', {
                 }
             },
             {
-                title: 'Request A Song',
+                title: 'Request New Songs',
                 slideButton: true,
                 items: [
                     {
                         xtype: 'toolbar',
                         docked: 'top',
                         minHeight: '50px',
-                        title: 'Request A Song'
+                        title: 'Request New Songs'
                     },
                     {
                         xtype: 'Submit'

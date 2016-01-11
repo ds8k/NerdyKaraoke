@@ -228,7 +228,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
         me._slideButtonConfig = {
             xtype: 'button',
             iconMask: true,
-            iconCls: 'list',
+            iconCls: 'menu',
             ui: 'plain',
             align: this.getListPosition(),
             //docked: 'left',
@@ -427,7 +427,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
             index = item.raw.index,
             container = me.container,
             func      = Ext.emptyFn;
-        
+
         if (me._cache[index] == undefined) {            
             // If the object has a handler defined, then we don't need to
             // create an Ext object
@@ -438,23 +438,14 @@ Ext.define('Ext.ux.slidenavigation.View', {
 
                 me.doMaskItem(me._cache[index], true);
 
-                // Wait until the component is painted before closing the container.  This makes
-                // the initial animation much smoother.
-                if (me.config.closeOnSelect) {
-                    me._cache[index].addListener('painted', function() {
-                        // The slight delay here gives the component enough time to update before
-                        // the close animation starts.
-                        Ext.defer(me.closeContainer, 200, me, [me.config.selectSlideDuration]);
-                    });
-                }
-                
-
                 // Add a button for controlling the slide, if desired
                 if ((item.raw.slideButton || false)) {
                     me.createSlideButton(me._cache[index], item.raw.slideButton);
                 }
             }
-        }        
+        }
+
+        Ext.defer(me.closeContainer, 200, me, [me.config.selectSlideDuration]);
 
         if (Ext.isFunction(me._cache[index])) {
             func = me._cache[index];
@@ -590,7 +581,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
     closeContainer: function(duration) {
         var me       = this,
             duration = duration || this.config.slideDuration;
-        
+
         if (me.__init) {
             me.fireAction('close', [me, 0, duration], 'moveContainer', me);
         }
@@ -617,6 +608,7 @@ Ext.define('Ext.ux.slidenavigation.View', {
         if (this.isClosed()) {
             this.openContainer(duration);
         } else {
+
             this.closeContainer(duration);
         }
     },

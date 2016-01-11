@@ -17,7 +17,7 @@ Ext.define('NerdyKaraoke.view.Issues', {
                 xtype: 'component',
                 styleHtmlContent: true,
                 margin: '-2em 0em 0em 0em',
-                html: 'If you\'re having issues viewing the track list you may need to clear the website data in your mobile browser. Both Chrome and Safari have this option in their Settings menu.<br><br>If you still have problems or want to send suggestions feel free to use the button below:'
+                html: '<div style="color:#727272;">If you\'re having issues viewing the track list you may need to clear the website data in your mobile browser. Both Chrome and Safari have this option in their Settings menu.<br><br>If you still have problems or want to send suggestions feel free to use the button below:</div>'
             },
             {
             	xtype: 'container',
