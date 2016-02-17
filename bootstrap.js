@@ -673,8 +673,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
   "NerdyKaraoke.store.Alphabet": [],
+  "NerdyKaraoke.store.Category": [],
   "NerdyKaraoke.store.Karaoke": [],
   "NerdyKaraoke.store.NewKaraoke": [],
+  "NerdyKaraoke.view.Category": [],
+  "NerdyKaraoke.view.CategoryContainer": [],
+  "NerdyKaraoke.view.CategoryLyrics": [],
   "NerdyKaraoke.view.Issues": [],
   "NerdyKaraoke.view.Main": [],
   "NerdyKaraoke.view.Submit": [],
@@ -1419,8 +1423,18 @@ Ext.ClassManager.addNameAliasMappings({
   "NerdyKaraoke.model.RequestForm": [],
   "NerdyKaraoke.model.Songs": [],
   "NerdyKaraoke.store.Alphabet": [],
+  "NerdyKaraoke.store.Category": [],
   "NerdyKaraoke.store.Karaoke": [],
   "NerdyKaraoke.store.NewKaraoke": [],
+  "NerdyKaraoke.view.Category": [
+    "widget.Category"
+  ],
+  "NerdyKaraoke.view.CategoryContainer": [
+    "widget.CategoryContainer"
+  ],
+  "NerdyKaraoke.view.CategoryLyrics": [
+    "widget.CategoryLyrics"
+  ],
   "NerdyKaraoke.view.Issues": [
     "widget.Issues"
   ],

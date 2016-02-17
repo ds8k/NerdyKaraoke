@@ -276,3 +276,28 @@ li {
 		}
 	}
 }
+
+.title h3 {
+	text-align: center;
+	font-size: 1.5em;
+	padding: 1em 0em;
+}
+
+.category {
+	height:20vw;
+	width: 85%;
+	float:left;
+	position: relative;
+	vertical-align: middle;
+	margin: 1%;
+	background-color: #B6B6B6;
+	border-radius: 2px;
+	border: none;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	center {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 6.5vw;
+	}
+}

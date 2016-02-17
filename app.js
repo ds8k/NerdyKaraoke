@@ -16,6 +16,7 @@ Ext.application({
 
     stores: [
         'Alphabet',
+        'Category',
         'Karaoke',
         'NewKaraoke'
     ],
@@ -32,6 +33,9 @@ Ext.application({
 
     views: [
         'Main',
+        'CategoryContainer',
+          'Category',
+          'CategoryLyrics',
         'WhatsNewContainer',
             'WhatsNew',
             'WhatsNewLyrics',
@@ -101,6 +105,8 @@ Ext.application({
                }
            }
        });
+
+       Ext.getStore('Alphabet').load();
     },
 
     onUpdated: function() {

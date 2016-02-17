@@ -3,9 +3,11 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
     config: {
 		refs: {
+            Main: 'main',
             TrackContainer: 'TrackContainer',
             TrackList: 'TrackList',
             WhatsNew: 'WhatsNew',
+            Category: 'Category',
             SearchField: 'searchfield[name=search]',
             SubmitRequest: 'button[action=submitRequest]',
             ContactMe: 'button[action=contactMe]',
@@ -24,6 +26,9 @@ Ext.define('NerdyKaraoke.controller.EventController', {
             WhatsNew: {
                 itemtap: 'onTrackTap'
             },
+            Category: {
+                itemtap: 'onTrackTap'
+            },
             SubmitRequest: {
             	tap: 'onSubmitRequest'
             },
@@ -40,6 +45,10 @@ Ext.define('NerdyKaraoke.controller.EventController', {
                 tap: 'showChangelog'
             }
         }
+    },
+
+    init: function() {
+        NerdyKaraoke.app.controller = this;
     },
 
     searchTrackList: function(field, e) {
@@ -220,20 +229,37 @@ Ext.define('NerdyKaraoke.controller.EventController', {
 
         //analytics
         ga('send', 'event', 'lyrics', 'tap', record.data.Artist + ' ' + record.data.Title);
-    	var tabpanel = record.data.addNew ? Ext.ComponentQuery.query('WhatsNewContainer')[0] : Ext.ComponentQuery.query('TrackContainer')[0],
-            scope = this,
-            lyrics, searchLyrics, backButton, page;
+    	var scope = this,
+            tabpanel, lyrics, searchLyrics, backButton, page;
 
-        if(tabpanel.config.xtype === 'TrackContainer') {
-            lyrics = Ext.ComponentQuery.query('panel[name=lyricsbox]')[0];
-            searchLyrics = Ext.ComponentQuery.query('button[name=trackSearch]')[0];
-            backButton = Ext.ComponentQuery.query('button[name=trackBack]')[0];
-            page = 1;
-        } else {
-            lyrics = Ext.ComponentQuery.query('panel[name=newlyricsbox]')[0];
-            searchLyrics = Ext.ComponentQuery.query('button[name=newSearch]')[0];
-            backButton = Ext.ComponentQuery.query('button[name=newBack]')[0];
-            page = 0;
+        switch(scope.getMain().getActiveItem().raw.title) {
+            case 'Search':
+                {
+                    tabpanel = Ext.ComponentQuery.query('TrackContainer')[0];
+                    lyrics = Ext.ComponentQuery.query('panel[name=lyricsbox]')[0];
+                    searchLyrics = Ext.ComponentQuery.query('button[name=trackSearch]')[0];
+                    backButton = Ext.ComponentQuery.query('button[name=trackBack]')[0];
+                    page = 1;
+                    break;
+                }
+            case 'What\'s New':
+                {
+                    tabpanel = Ext.ComponentQuery.query('WhatsNewContainer')[0];
+                    lyrics = Ext.ComponentQuery.query('panel[name=newlyricsbox]')[0];
+                    searchLyrics = Ext.ComponentQuery.query('button[name=newSearch]')[0];
+                    backButton = Ext.ComponentQuery.query('button[name=newBack]')[0];
+                    page = 0;
+                    break;
+                }
+            default:
+                {
+                    tabpanel = Ext.ComponentQuery.query('CategoryContainer')[0];
+                    lyrics = Ext.ComponentQuery.query('panel[name=categorylyricsbox]')[0];
+                    searchLyrics = Ext.ComponentQuery.query('button[name=categorySearch]')[0];
+                    backButton = Ext.ComponentQuery.query('button[name=categoryBack]')[0];
+                    page = 0;
+                    break;
+                }
         }
 
         //Set the HTML for lyrics
@@ -348,11 +374,9 @@ Ext.define('NerdyKaraoke.controller.EventController', {
     onBackButton: function(page, tabpanel) {
         console.log('onBackButton', arguments);
 
-        if(tabpanel.config.xtype === 'TrackContainer') {
-            Ext.ComponentQuery.query('panel[name=lyricsbox]')[0].setHtml('');
-        } else {
-            Ext.ComponentQuery.query('panel[name=newlyricsbox]')[0].setHtml('');
-        }
+        if(tabpanel.config.xtype === 'TrackContainer') Ext.ComponentQuery.query('panel[name=lyricsbox]')[0].setHtml('');
+        if(tabpanel.config.xtype === 'WhatsNewContainer') Ext.ComponentQuery.query('panel[name=newlyricsbox]')[0].setHtml('');
+        if(tabpanel.config.xtype === 'CategoryContainer') Ext.ComponentQuery.query('panel[name=categorylyricsbox]')[0].setHtml('');
         tabpanel.setActiveItem(page);
     },
 
@@ -675,11 +699,7 @@ Ext.define('NerdyKaraoke.controller.EventController', {
         Ext.Msg.alert(
             'Latest Changes',
             '<ul style="font-size:14px;line-height:1.5em;text-align:left;">' +
-                '<li style="padding-top:0.5em">Artists with "The" in their name no longer show up in the "T\'s"</li>' +
-                '<li>Loading spinner actually spins again!</li>' +
-                '<li>Removed the letter side index bar. It sucked. Use the Artist filter instead.</li>' +
-                '<li>Improved search? Made it worse? Let me know!</li>' +
-                '<li>Made the app look less ugly. Possibly.</li>' +
+                '<li style="padding-top:0.5em">It\'s Disney night! Special Disney section</li>' +
             '</ul>'
         );
     }

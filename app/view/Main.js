@@ -45,7 +45,6 @@ Ext.define('NerdyKaraoke.view.Main', {
         defaults: {
             xtype: 'container'
         },
-        
         items: [
             {
                 title: 'Home',
@@ -121,6 +120,28 @@ Ext.define('NerdyKaraoke.view.Main', {
                     painted: {
                         fn: function() {
                             ga('send', 'pageview', 'Tracks');
+                        }
+                    }
+                }
+            },
+            {
+                title: 'Disney!',
+                slideButton: true,
+                items: [
+                    {
+                        xtype: 'toolbar',
+                        docked: 'top',
+                        minHeight: '50px',
+                        title: 'Disney Songs'
+                    },
+                    {
+                        xtype: 'CategoryContainer'
+                    }
+                ],
+                listeners : {
+                    painted: {
+                        fn: function() {
+                            ga('send', 'pageview', 'Disney');
                         }
                     }
                 }
